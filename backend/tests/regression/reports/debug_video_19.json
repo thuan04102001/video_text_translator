@@ -1,0 +1,1091 @@
+﻿{
+    "status":  "ok",
+    "video_path":  "D:\\KTTND\\Page01_Meme\\C\\19-fb-61583971002344-2066403660893553.mp4",
+    "video_name":  "19-fb-61583971002344-2066403660893553.mp4",
+    "video_info":  {
+                       "video_path":  "D:\\KTTND\\Page01_Meme\\C\\19-fb-61583971002344-2066403660893553.mp4",
+                       "fps":  30.0,
+                       "frame_count":  618,
+                       "width":  720,
+                       "height":  1280,
+                       "duration":  20.6
+                   },
+    "settings":  {
+                     "interval_sec":  0.25,
+                     "max_frames":  0,
+                     "languages":  [
+                                       "en"
+                                   ],
+                     "gpu_requested":  null,
+                     "gpu_resolved":  true,
+                     "min_confidence":  0.15,
+                     "min_score":  0.55,
+                     "max_gap_sec":  0.6,
+                     "similarity_threshold":  0.58,
+                     "token_threshold":  0.55,
+                     "min_box_similarity":  0.38,
+                     "min_timeline_samples":  1
+                 },
+    "summary":  {
+                    "sample_count":  83,
+                    "ocr_frame_count":  83,
+                    "total_ocr_items":  183,
+                    "candidate_count":  83,
+                    "timeline_count":  3,
+                    "selected_timeline_count":  0,
+                    "role_counts":  {
+                                        "SUPPORTING_TEXT":  3
+                                    }
+                },
+    "raw_timelines":  [
+                          {
+                              "group_id":  1,
+                              "start":  12.0,
+                              "end":  20.6,
+                              "duration":  8.600000000000001,
+                              "sample_count":  35,
+                              "text":  "Reaccion a una arana en Australia",
+                              "normalized_text":  "reaccion a una arana en australia",
+                              "box":  [
+                                          82,
+                                          278,
+                                          584,
+                                          427
+                                      ],
+                              "average_box":  [
+                                                  80,
+                                                  278,
+                                                  586,
+                                                  427
+                                              ],
+                              "confidence":  0.9726,
+                              "score":  {
+                                            "final_score":  0.9395,
+                                            "line_count":  2,
+                                            "source":  "caption_selector",
+                                            "header_only":  false,
+                                            "region_index":  1
+                                        },
+                              "best_sample":  {
+                                                  "sample_index":  55,
+                                                  "time":  13.75,
+                                                  "frame_index":  412,
+                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\19-fb-61583971002344-2066403660893553_7f10258a\\frame_000055_13.75s.jpg",
+                                                  "region_index":  1,
+                                                  "text":  "Reaccion a una arana en Australia",
+                                                  "normalized_text":  "reaccion a una arana en australia",
+                                                  "box":  [
+                                                              82,
+                                                              278,
+                                                              584,
+                                                              427
+                                                          ],
+                                                  "confidence":  0.9726,
+                                                  "score":  {
+                                                                "final_score":  0.9395,
+                                                                "line_count":  2,
+                                                                "source":  "caption_selector",
+                                                                "header_only":  false,
+                                                                "region_index":  1
+                                                            },
+                                                  "source_items":  [
+                                                                       {
+                                                                           "text":  "Reaccion a una arana",
+                                                                           "box":  [
+                                                                                       82,
+                                                                                       278,
+                                                                                       584,
+                                                                                       332
+                                                                                   ],
+                                                                           "confidence":  0.9509257132923831,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               82.0,
+                                                                                               278.0
+                                                                                           ],
+                                                                                           [
+                                                                                               584.0,
+                                                                                               278.0
+                                                                                           ],
+                                                                                           [
+                                                                                               584.0,
+                                                                                               332.0
+                                                                                           ],
+                                                                                           [
+                                                                                               82.0,
+                                                                                               332.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "Reaccion a una arana",
+                                                                           "normalized_text":  "reaccion a una arana",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.9,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.9509,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.9352
+                                                                                     }
+                                                                       },
+                                                                       {
+                                                                           "text":  "en Australia",
+                                                                           "box":  [
+                                                                                       155,
+                                                                                       367,
+                                                                                       485,
+                                                                                       427
+                                                                                   ],
+                                                                           "confidence":  0.9942309474623303,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               155.0,
+                                                                                               367.0
+                                                                                           ],
+                                                                                           [
+                                                                                               485.0,
+                                                                                               367.0
+                                                                                           ],
+                                                                                           [
+                                                                                               485.0,
+                                                                                               427.0
+                                                                                           ],
+                                                                                           [
+                                                                                               155.0,
+                                                                                               427.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "en Australia",
+                                                                           "normalized_text":  "en australia",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.9,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.9942,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.9438
+                                                                                     }
+                                                                       }
+                                                                   ],
+                                                  "best_item":  {
+                                                                    "text":  "en Australia",
+                                                                    "box":  [
+                                                                                155,
+                                                                                367,
+                                                                                485,
+                                                                                427
+                                                                            ],
+                                                                    "confidence":  0.9942309474623303,
+                                                                    "raw_box":  [
+                                                                                    [
+                                                                                        155.0,
+                                                                                        367.0
+                                                                                    ],
+                                                                                    [
+                                                                                        485.0,
+                                                                                        367.0
+                                                                                    ],
+                                                                                    [
+                                                                                        485.0,
+                                                                                        427.0
+                                                                                    ],
+                                                                                    [
+                                                                                        155.0,
+                                                                                        427.0
+                                                                                    ]
+                                                                                ],
+                                                                    "original_text":  "en Australia",
+                                                                    "normalized_text":  "en australia",
+                                                                    "is_empty":  false,
+                                                                    "score":  {
+                                                                                  "text_quality_score":  0.9,
+                                                                                  "size_score":  1.0,
+                                                                                  "position_score":  0.9,
+                                                                                  "confidence_score":  0.9942,
+                                                                                  "noise_penalty":  0.0,
+                                                                                  "final_score":  0.9438
+                                                                              }
+                                                                }
+                                              }
+                          },
+                          {
+                              "group_id":  2,
+                              "start":  5.75,
+                              "end":  12.0,
+                              "duration":  6.25,
+                              "sample_count":  25,
+                              "text":  "Reaccion a una arana- en Asia",
+                              "normalized_text":  "reaccion a una arana en asia",
+                              "box":  [
+                                          80,
+                                          278,
+                                          586,
+                                          416
+                                      ],
+                              "average_box":  [
+                                                  80,
+                                                  278,
+                                                  586,
+                                                  416
+                                              ],
+                              "confidence":  0.8607,
+                              "score":  {
+                                            "final_score":  0.9172,
+                                            "line_count":  2,
+                                            "source":  "caption_selector",
+                                            "header_only":  false,
+                                            "region_index":  1
+                                        },
+                              "best_sample":  {
+                                                  "sample_index":  25,
+                                                  "time":  6.25,
+                                                  "frame_index":  188,
+                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\19-fb-61583971002344-2066403660893553_7f10258a\\frame_000025_6.25s.jpg",
+                                                  "region_index":  1,
+                                                  "text":  "Reaccion a una arana- en Asia",
+                                                  "normalized_text":  "reaccion a una arana en asia",
+                                                  "box":  [
+                                                              80,
+                                                              278,
+                                                              586,
+                                                              416
+                                                          ],
+                                                  "confidence":  0.8607,
+                                                  "score":  {
+                                                                "final_score":  0.9172,
+                                                                "line_count":  2,
+                                                                "source":  "caption_selector",
+                                                                "header_only":  false,
+                                                                "region_index":  1
+                                                            },
+                                                  "source_items":  [
+                                                                       {
+                                                                           "text":  "Reaccion a una arana-",
+                                                                           "box":  [
+                                                                                       80,
+                                                                                       278,
+                                                                                       586,
+                                                                                       332
+                                                                                   ],
+                                                                           "confidence":  0.8140839107254818,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               80.0,
+                                                                                               278.0
+                                                                                           ],
+                                                                                           [
+                                                                                               586.0,
+                                                                                               278.0
+                                                                                           ],
+                                                                                           [
+                                                                                               586.0,
+                                                                                               332.0
+                                                                                           ],
+                                                                                           [
+                                                                                               80.0,
+                                                                                               332.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "Reaccion a una arana-",
+                                                                           "normalized_text":  "reaccion a una arana",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.9,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.8141,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.9078
+                                                                                     }
+                                                                       },
+                                                                       {
+                                                                           "text":  "en Asia",
+                                                                           "box":  [
+                                                                                       162,
+                                                                                       362,
+                                                                                       364,
+                                                                                       416
+                                                                                   ],
+                                                                           "confidence":  0.9072889422660846,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               162.0,
+                                                                                               362.0
+                                                                                           ],
+                                                                                           [
+                                                                                               364.0,
+                                                                                               362.0
+                                                                                           ],
+                                                                                           [
+                                                                                               364.0,
+                                                                                               416.0
+                                                                                           ],
+                                                                                           [
+                                                                                               162.0,
+                                                                                               416.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "en Asia",
+                                                                           "normalized_text":  "en asia",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.9,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.9073,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.9265
+                                                                                     }
+                                                                       }
+                                                                   ],
+                                                  "best_item":  {
+                                                                    "text":  "en Asia",
+                                                                    "box":  [
+                                                                                162,
+                                                                                362,
+                                                                                364,
+                                                                                416
+                                                                            ],
+                                                                    "confidence":  0.9072889422660846,
+                                                                    "raw_box":  [
+                                                                                    [
+                                                                                        162.0,
+                                                                                        362.0
+                                                                                    ],
+                                                                                    [
+                                                                                        364.0,
+                                                                                        362.0
+                                                                                    ],
+                                                                                    [
+                                                                                        364.0,
+                                                                                        416.0
+                                                                                    ],
+                                                                                    [
+                                                                                        162.0,
+                                                                                        416.0
+                                                                                    ]
+                                                                                ],
+                                                                    "original_text":  "en Asia",
+                                                                    "normalized_text":  "en asia",
+                                                                    "is_empty":  false,
+                                                                    "score":  {
+                                                                                  "text_quality_score":  0.9,
+                                                                                  "size_score":  1.0,
+                                                                                  "position_score":  0.9,
+                                                                                  "confidence_score":  0.9073,
+                                                                                  "noise_penalty":  0.0,
+                                                                                  "final_score":  0.9265
+                                                                              }
+                                                                }
+                                              }
+                          },
+                          {
+                              "group_id":  3,
+                              "start":  0.0,
+                              "end":  5.75,
+                              "duration":  5.75,
+                              "sample_count":  23,
+                              "text":  "Reaccion a una arana en Europa",
+                              "normalized_text":  "reaccion a una arana en europa",
+                              "box":  [
+                                          80,
+                                          278,
+                                          584,
+                                          424
+                                      ],
+                              "average_box":  [
+                                                  80,
+                                                  278,
+                                                  584,
+                                                  426
+                                              ],
+                              "confidence":  0.9452,
+                              "score":  {
+                                            "final_score":  0.9341,
+                                            "line_count":  2,
+                                            "source":  "caption_selector",
+                                            "header_only":  false,
+                                            "region_index":  1
+                                        },
+                              "best_sample":  {
+                                                  "sample_index":  16,
+                                                  "time":  4.0,
+                                                  "frame_index":  120,
+                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\19-fb-61583971002344-2066403660893553_7f10258a\\frame_000016_4.00s.jpg",
+                                                  "region_index":  1,
+                                                  "text":  "Reaccion a una arana en Europa",
+                                                  "normalized_text":  "reaccion a una arana en europa",
+                                                  "box":  [
+                                                              80,
+                                                              278,
+                                                              584,
+                                                              424
+                                                          ],
+                                                  "confidence":  0.9452,
+                                                  "score":  {
+                                                                "final_score":  0.9341,
+                                                                "line_count":  2,
+                                                                "source":  "caption_selector",
+                                                                "header_only":  false,
+                                                                "region_index":  1
+                                                            },
+                                                  "source_items":  [
+                                                                       {
+                                                                           "text":  "Reaccion a una arana",
+                                                                           "box":  [
+                                                                                       80,
+                                                                                       278,
+                                                                                       584,
+                                                                                       330
+                                                                                   ],
+                                                                           "confidence":  0.8909716696762987,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               80.0,
+                                                                                               278.0
+                                                                                           ],
+                                                                                           [
+                                                                                               584.0,
+                                                                                               278.0
+                                                                                           ],
+                                                                                           [
+                                                                                               584.0,
+                                                                                               330.0
+                                                                                           ],
+                                                                                           [
+                                                                                               80.0,
+                                                                                               330.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "Reaccion a una arana",
+                                                                           "normalized_text":  "reaccion a una arana",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.9,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.891,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.9232
+                                                                                     }
+                                                                       },
+                                                                       {
+                                                                           "text":  "en Europa",
+                                                                           "box":  [
+                                                                                       187,
+                                                                                       358,
+                                                                                       463,
+                                                                                       424
+                                                                                   ],
+                                                                           "confidence":  0.9994904743232732,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               187.0,
+                                                                                               358.0
+                                                                                           ],
+                                                                                           [
+                                                                                               463.0,
+                                                                                               358.0
+                                                                                           ],
+                                                                                           [
+                                                                                               463.0,
+                                                                                               424.0
+                                                                                           ],
+                                                                                           [
+                                                                                               187.0,
+                                                                                               424.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "en Europa",
+                                                                           "normalized_text":  "en europa",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.9,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.9995,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.9449
+                                                                                     }
+                                                                       }
+                                                                   ],
+                                                  "best_item":  {
+                                                                    "text":  "en Europa",
+                                                                    "box":  [
+                                                                                187,
+                                                                                358,
+                                                                                463,
+                                                                                424
+                                                                            ],
+                                                                    "confidence":  0.9994904743232732,
+                                                                    "raw_box":  [
+                                                                                    [
+                                                                                        187.0,
+                                                                                        358.0
+                                                                                    ],
+                                                                                    [
+                                                                                        463.0,
+                                                                                        358.0
+                                                                                    ],
+                                                                                    [
+                                                                                        463.0,
+                                                                                        424.0
+                                                                                    ],
+                                                                                    [
+                                                                                        187.0,
+                                                                                        424.0
+                                                                                    ]
+                                                                                ],
+                                                                    "original_text":  "en Europa",
+                                                                    "normalized_text":  "en europa",
+                                                                    "is_empty":  false,
+                                                                    "score":  {
+                                                                                  "text_quality_score":  0.9,
+                                                                                  "size_score":  1.0,
+                                                                                  "position_score":  0.9,
+                                                                                  "confidence_score":  0.9995,
+                                                                                  "noise_penalty":  0.0,
+                                                                                  "final_score":  0.9449
+                                                                              }
+                                                                }
+                                              }
+                          }
+                      ],
+    "final_caption_selection":  {
+                                    "status":  "ok",
+                                    "stage":  "final_caption_selection",
+                                    "input_timeline_count":  3,
+                                    "selected_timeline_count":  0,
+                                    "role_counts":  {
+                                                        "SUPPORTING_TEXT":  3
+                                                    },
+                                    "selected_timelines":  [
+
+                                                           ],
+                                    "all_timelines":  [
+                                                          {
+                                                              "group_id":  1,
+                                                              "start":  12.0,
+                                                              "end":  20.6,
+                                                              "duration":  8.600000000000001,
+                                                              "sample_count":  35,
+                                                              "text":  "Reaccion a una arana en Australia",
+                                                              "normalized_text":  "reaccion a una arana en australia",
+                                                              "box":  [
+                                                                          82,
+                                                                          278,
+                                                                          584,
+                                                                          427
+                                                                      ],
+                                                              "average_box":  [
+                                                                                  80,
+                                                                                  278,
+                                                                                  586,
+                                                                                  427
+                                                                              ],
+                                                              "confidence":  0.9726,
+                                                              "score":  {
+                                                                            "final_score":  0.9395,
+                                                                            "line_count":  2,
+                                                                            "source":  "caption_selector",
+                                                                            "header_only":  false,
+                                                                            "region_index":  1
+                                                                        },
+                                                              "best_sample":  {
+                                                                                  "sample_index":  55,
+                                                                                  "time":  13.75,
+                                                                                  "frame_index":  412,
+                                                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\19-fb-61583971002344-2066403660893553_7f10258a\\frame_000055_13.75s.jpg",
+                                                                                  "region_index":  1,
+                                                                                  "text":  "Reaccion a una arana en Australia",
+                                                                                  "normalized_text":  "reaccion a una arana en australia",
+                                                                                  "box":  [
+                                                                                              82,
+                                                                                              278,
+                                                                                              584,
+                                                                                              427
+                                                                                          ],
+                                                                                  "confidence":  0.9726,
+                                                                                  "score":  {
+                                                                                                "final_score":  0.9395,
+                                                                                                "line_count":  2,
+                                                                                                "source":  "caption_selector",
+                                                                                                "header_only":  false,
+                                                                                                "region_index":  1
+                                                                                            },
+                                                                                  "source_items":  [
+                                                                                                       {
+                                                                                                           "text":  "Reaccion a una arana",
+                                                                                                           "box":  [
+                                                                                                                       82,
+                                                                                                                       278,
+                                                                                                                       584,
+                                                                                                                       332
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9509257132923831,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               82.0,
+                                                                                                                               278.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               584.0,
+                                                                                                                               278.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               584.0,
+                                                                                                                               332.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               82.0,
+                                                                                                                               332.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "Reaccion a una arana",
+                                                                                                           "normalized_text":  "reaccion a una arana",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.9,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.9509,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.9352
+                                                                                                                     }
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "text":  "en Australia",
+                                                                                                           "box":  [
+                                                                                                                       155,
+                                                                                                                       367,
+                                                                                                                       485,
+                                                                                                                       427
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9942309474623303,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               155.0,
+                                                                                                                               367.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               485.0,
+                                                                                                                               367.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               485.0,
+                                                                                                                               427.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               155.0,
+                                                                                                                               427.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "en Australia",
+                                                                                                           "normalized_text":  "en australia",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.9,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.9942,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.9438
+                                                                                                                     }
+                                                                                                       }
+                                                                                                   ],
+                                                                                  "best_item":  {
+                                                                                                    "text":  "en Australia",
+                                                                                                    "box":  [
+                                                                                                                155,
+                                                                                                                367,
+                                                                                                                485,
+                                                                                                                427
+                                                                                                            ],
+                                                                                                    "confidence":  0.9942309474623303,
+                                                                                                    "raw_box":  [
+                                                                                                                    [
+                                                                                                                        155.0,
+                                                                                                                        367.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        485.0,
+                                                                                                                        367.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        485.0,
+                                                                                                                        427.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        155.0,
+                                                                                                                        427.0
+                                                                                                                    ]
+                                                                                                                ],
+                                                                                                    "original_text":  "en Australia",
+                                                                                                    "normalized_text":  "en australia",
+                                                                                                    "is_empty":  false,
+                                                                                                    "score":  {
+                                                                                                                  "text_quality_score":  0.9,
+                                                                                                                  "size_score":  1.0,
+                                                                                                                  "position_score":  0.9,
+                                                                                                                  "confidence_score":  0.9942,
+                                                                                                                  "noise_penalty":  0.0,
+                                                                                                                  "final_score":  0.9438
+                                                                                                              }
+                                                                                                }
+                                                                              },
+                                                              "caption_role":  "SUPPORTING_TEXT",
+                                                              "should_translate":  false
+                                                          },
+                                                          {
+                                                              "group_id":  2,
+                                                              "start":  5.75,
+                                                              "end":  12.0,
+                                                              "duration":  6.25,
+                                                              "sample_count":  25,
+                                                              "text":  "Reaccion a una arana- en Asia",
+                                                              "normalized_text":  "reaccion a una arana en asia",
+                                                              "box":  [
+                                                                          80,
+                                                                          278,
+                                                                          586,
+                                                                          416
+                                                                      ],
+                                                              "average_box":  [
+                                                                                  80,
+                                                                                  278,
+                                                                                  586,
+                                                                                  416
+                                                                              ],
+                                                              "confidence":  0.8607,
+                                                              "score":  {
+                                                                            "final_score":  0.9172,
+                                                                            "line_count":  2,
+                                                                            "source":  "caption_selector",
+                                                                            "header_only":  false,
+                                                                            "region_index":  1
+                                                                        },
+                                                              "best_sample":  {
+                                                                                  "sample_index":  25,
+                                                                                  "time":  6.25,
+                                                                                  "frame_index":  188,
+                                                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\19-fb-61583971002344-2066403660893553_7f10258a\\frame_000025_6.25s.jpg",
+                                                                                  "region_index":  1,
+                                                                                  "text":  "Reaccion a una arana- en Asia",
+                                                                                  "normalized_text":  "reaccion a una arana en asia",
+                                                                                  "box":  [
+                                                                                              80,
+                                                                                              278,
+                                                                                              586,
+                                                                                              416
+                                                                                          ],
+                                                                                  "confidence":  0.8607,
+                                                                                  "score":  {
+                                                                                                "final_score":  0.9172,
+                                                                                                "line_count":  2,
+                                                                                                "source":  "caption_selector",
+                                                                                                "header_only":  false,
+                                                                                                "region_index":  1
+                                                                                            },
+                                                                                  "source_items":  [
+                                                                                                       {
+                                                                                                           "text":  "Reaccion a una arana-",
+                                                                                                           "box":  [
+                                                                                                                       80,
+                                                                                                                       278,
+                                                                                                                       586,
+                                                                                                                       332
+                                                                                                                   ],
+                                                                                                           "confidence":  0.8140839107254818,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               80.0,
+                                                                                                                               278.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               586.0,
+                                                                                                                               278.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               586.0,
+                                                                                                                               332.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               80.0,
+                                                                                                                               332.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "Reaccion a una arana-",
+                                                                                                           "normalized_text":  "reaccion a una arana",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.9,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.8141,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.9078
+                                                                                                                     }
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "text":  "en Asia",
+                                                                                                           "box":  [
+                                                                                                                       162,
+                                                                                                                       362,
+                                                                                                                       364,
+                                                                                                                       416
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9072889422660846,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               162.0,
+                                                                                                                               362.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               364.0,
+                                                                                                                               362.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               364.0,
+                                                                                                                               416.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               162.0,
+                                                                                                                               416.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "en Asia",
+                                                                                                           "normalized_text":  "en asia",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.9,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.9073,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.9265
+                                                                                                                     }
+                                                                                                       }
+                                                                                                   ],
+                                                                                  "best_item":  {
+                                                                                                    "text":  "en Asia",
+                                                                                                    "box":  [
+                                                                                                                162,
+                                                                                                                362,
+                                                                                                                364,
+                                                                                                                416
+                                                                                                            ],
+                                                                                                    "confidence":  0.9072889422660846,
+                                                                                                    "raw_box":  [
+                                                                                                                    [
+                                                                                                                        162.0,
+                                                                                                                        362.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        364.0,
+                                                                                                                        362.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        364.0,
+                                                                                                                        416.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        162.0,
+                                                                                                                        416.0
+                                                                                                                    ]
+                                                                                                                ],
+                                                                                                    "original_text":  "en Asia",
+                                                                                                    "normalized_text":  "en asia",
+                                                                                                    "is_empty":  false,
+                                                                                                    "score":  {
+                                                                                                                  "text_quality_score":  0.9,
+                                                                                                                  "size_score":  1.0,
+                                                                                                                  "position_score":  0.9,
+                                                                                                                  "confidence_score":  0.9073,
+                                                                                                                  "noise_penalty":  0.0,
+                                                                                                                  "final_score":  0.9265
+                                                                                                              }
+                                                                                                }
+                                                                              },
+                                                              "caption_role":  "SUPPORTING_TEXT",
+                                                              "should_translate":  false
+                                                          },
+                                                          {
+                                                              "group_id":  3,
+                                                              "start":  0.0,
+                                                              "end":  5.75,
+                                                              "duration":  5.75,
+                                                              "sample_count":  23,
+                                                              "text":  "Reaccion a una arana en Europa",
+                                                              "normalized_text":  "reaccion a una arana en europa",
+                                                              "box":  [
+                                                                          80,
+                                                                          278,
+                                                                          584,
+                                                                          424
+                                                                      ],
+                                                              "average_box":  [
+                                                                                  80,
+                                                                                  278,
+                                                                                  584,
+                                                                                  426
+                                                                              ],
+                                                              "confidence":  0.9452,
+                                                              "score":  {
+                                                                            "final_score":  0.9341,
+                                                                            "line_count":  2,
+                                                                            "source":  "caption_selector",
+                                                                            "header_only":  false,
+                                                                            "region_index":  1
+                                                                        },
+                                                              "best_sample":  {
+                                                                                  "sample_index":  16,
+                                                                                  "time":  4.0,
+                                                                                  "frame_index":  120,
+                                                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\19-fb-61583971002344-2066403660893553_7f10258a\\frame_000016_4.00s.jpg",
+                                                                                  "region_index":  1,
+                                                                                  "text":  "Reaccion a una arana en Europa",
+                                                                                  "normalized_text":  "reaccion a una arana en europa",
+                                                                                  "box":  [
+                                                                                              80,
+                                                                                              278,
+                                                                                              584,
+                                                                                              424
+                                                                                          ],
+                                                                                  "confidence":  0.9452,
+                                                                                  "score":  {
+                                                                                                "final_score":  0.9341,
+                                                                                                "line_count":  2,
+                                                                                                "source":  "caption_selector",
+                                                                                                "header_only":  false,
+                                                                                                "region_index":  1
+                                                                                            },
+                                                                                  "source_items":  [
+                                                                                                       {
+                                                                                                           "text":  "Reaccion a una arana",
+                                                                                                           "box":  [
+                                                                                                                       80,
+                                                                                                                       278,
+                                                                                                                       584,
+                                                                                                                       330
+                                                                                                                   ],
+                                                                                                           "confidence":  0.8909716696762987,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               80.0,
+                                                                                                                               278.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               584.0,
+                                                                                                                               278.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               584.0,
+                                                                                                                               330.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               80.0,
+                                                                                                                               330.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "Reaccion a una arana",
+                                                                                                           "normalized_text":  "reaccion a una arana",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.9,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.891,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.9232
+                                                                                                                     }
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "text":  "en Europa",
+                                                                                                           "box":  [
+                                                                                                                       187,
+                                                                                                                       358,
+                                                                                                                       463,
+                                                                                                                       424
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9994904743232732,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               187.0,
+                                                                                                                               358.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               463.0,
+                                                                                                                               358.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               463.0,
+                                                                                                                               424.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               187.0,
+                                                                                                                               424.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "en Europa",
+                                                                                                           "normalized_text":  "en europa",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.9,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.9995,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.9449
+                                                                                                                     }
+                                                                                                       }
+                                                                                                   ],
+                                                                                  "best_item":  {
+                                                                                                    "text":  "en Europa",
+                                                                                                    "box":  [
+                                                                                                                187,
+                                                                                                                358,
+                                                                                                                463,
+                                                                                                                424
+                                                                                                            ],
+                                                                                                    "confidence":  0.9994904743232732,
+                                                                                                    "raw_box":  [
+                                                                                                                    [
+                                                                                                                        187.0,
+                                                                                                                        358.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        463.0,
+                                                                                                                        358.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        463.0,
+                                                                                                                        424.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        187.0,
+                                                                                                                        424.0
+                                                                                                                    ]
+                                                                                                                ],
+                                                                                                    "original_text":  "en Europa",
+                                                                                                    "normalized_text":  "en europa",
+                                                                                                    "is_empty":  false,
+                                                                                                    "score":  {
+                                                                                                                  "text_quality_score":  0.9,
+                                                                                                                  "size_score":  1.0,
+                                                                                                                  "position_score":  0.9,
+                                                                                                                  "confidence_score":  0.9995,
+                                                                                                                  "noise_penalty":  0.0,
+                                                                                                                  "final_score":  0.9449
+                                                                                                              }
+                                                                                                }
+                                                                              },
+                                                              "caption_role":  "SUPPORTING_TEXT",
+                                                              "should_translate":  false
+                                                          }
+                                                      ]
+                                },
+    "selected_timelines":  [
+
+                           ]
+}

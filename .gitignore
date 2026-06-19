@@ -1,0 +1,59 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Secrets and machine-local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python environments, caches and test output
+**/__pycache__/
+*.py[cod]
+*.pyo
+backend/venv/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Frontend dependencies and generated builds
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime databases and logs
+backend/data/*.sqlite
+backend/data/*.sqlite3
+backend/data/*.db
+backend/logs/
+*.log
+
+# Runtime media and temporary processing data
+backend/uploads/
+backend/outputs/
+backend/temp/
+uploads/
+outputs/
+temp/
+analysis_frames/
+
+# Generated regression reports; keep regression code and input fixtures
+backend/tests/regression/reports/history/
+
+# Local backups and packaged archives
+backups/
+*.zip
+*.7z
+*.rar

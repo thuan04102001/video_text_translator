@@ -1,0 +1,53 @@
+HUONG DAN SETUP NHANH
+=====================
+
+1. Moi truong can co
+- Windows 10/11.
+- Python 3.10 hoac 3.11, nho tick "Add Python to PATH" khi cai.
+- NodeJS LTS.
+- FFmpeg day du, gom ffmpeg va ffprobe trong PATH.
+
+2. Cai FFmpeg neu may chua co
+Mo CMD hoac PowerShell moi va chay:
+
+winget install Gyan.FFmpeg
+
+Sau khi cai xong, dong terminal cu va mo terminal moi, kiem tra:
+
+where ffmpeg
+where ffprobe
+
+Neu ca 2 lenh deu tra ve duong dan .exe la OK.
+
+3. Setup project
+Chay file:
+
+setup.bat
+
+File nay se:
+- Tao backend\venv neu chua co.
+- Cai Python packages trong backend\requirements.txt.
+- Cai Playwright Chromium cho Video Crawler.
+- Cai frontend packages bang npm install.
+- Tao cac folder runtime can thiet.
+
+4. Start tool
+Chay file:
+
+start.bat
+
+Tool se mo:
+- Backend API: http://127.0.0.1:8000
+- Frontend UI: http://127.0.0.1:5173
+
+5. Loi thuong gap
+- Bao thieu Python: cai Python va tick Add Python to PATH.
+- Bao thieu npm: cai NodeJS LTS.
+- Bao thieu ffmpeg/ffprobe: cai FFmpeg theo buoc 2.
+- Video Crawler loi browser: chay lai setup.bat hoac chay:
+
+backend\venv\Scripts\python -m playwright install chromium
+
+6. Ghi chu
+- Khi start backend, tool se tu clear uploads/temp runtime de tranh file cu gay treo.
+- Muon tat tool thi dong 2 cua so Backend va Frontend.

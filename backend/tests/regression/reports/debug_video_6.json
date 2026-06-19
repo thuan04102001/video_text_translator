@@ -1,0 +1,1125 @@
+﻿{
+    "status":  "ok",
+    "video_path":  "D:\\KTTND\\Page01_Meme\\C\\6-fb-61583971002344-1792602255036617.mp4",
+    "video_name":  "6-fb-61583971002344-1792602255036617.mp4",
+    "video_info":  {
+                       "video_path":  "D:\\KTTND\\Page01_Meme\\C\\6-fb-61583971002344-1792602255036617.mp4",
+                       "fps":  30.0,
+                       "frame_count":  427,
+                       "width":  720,
+                       "height":  1280,
+                       "duration":  14.233333333333333
+                   },
+    "settings":  {
+                     "interval_sec":  0.25,
+                     "max_frames":  0,
+                     "languages":  [
+                                       "en"
+                                   ],
+                     "gpu_requested":  null,
+                     "gpu_resolved":  true,
+                     "min_confidence":  0.15,
+                     "min_score":  0.55,
+                     "max_gap_sec":  0.6,
+                     "similarity_threshold":  0.58,
+                     "token_threshold":  0.55,
+                     "min_box_similarity":  0.38,
+                     "min_timeline_samples":  1
+                 },
+    "summary":  {
+                    "sample_count":  57,
+                    "ocr_frame_count":  57,
+                    "total_ocr_items":  155,
+                    "candidate_count":  64,
+                    "timeline_count":  4,
+                    "selected_timeline_count":  0,
+                    "role_counts":  {
+                                        "NOISE_TEXT":  3,
+                                        "SUPPORTING_TEXT":  1
+                                    }
+                },
+    "raw_timelines":  [
+                          {
+                              "group_id":  1,
+                              "start":  9.25,
+                              "end":  1.0,
+                              "duration":  0.0,
+                              "sample_count":  44,
+                              "text":  "Business plan in Greece=",
+                              "normalized_text":  "business plan in greece",
+                              "box":  [
+                                          97,
+                                          309,
+                                          618,
+                                          362
+                                      ],
+                              "average_box":  [
+                                                  95,
+                                                  309,
+                                                  622,
+                                                  362
+                                              ],
+                              "confidence":  0.8809,
+                              "score":  {
+                                            "final_score":  0.9212,
+                                            "line_count":  1,
+                                            "source":  "caption_selector",
+                                            "header_only":  false,
+                                            "region_index":  1
+                                        },
+                              "best_sample":  {
+                                                  "sample_index":  3,
+                                                  "time":  0.75,
+                                                  "frame_index":  22,
+                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\6-fb-61583971002344-1792602255036617_dfd4b708\\frame_000003_0.75s.jpg",
+                                                  "region_index":  1,
+                                                  "text":  "Business plan in Greece=",
+                                                  "normalized_text":  "business plan in greece",
+                                                  "box":  [
+                                                              97,
+                                                              309,
+                                                              618,
+                                                              362
+                                                          ],
+                                                  "confidence":  0.8809,
+                                                  "score":  {
+                                                                "final_score":  0.9212,
+                                                                "line_count":  1,
+                                                                "source":  "caption_selector",
+                                                                "header_only":  false,
+                                                                "region_index":  1
+                                                            },
+                                                  "source_items":  [
+                                                                       {
+                                                                           "text":  "Business plan in Greece=",
+                                                                           "box":  [
+                                                                                       97,
+                                                                                       309,
+                                                                                       618,
+                                                                                       362
+                                                                                   ],
+                                                                           "confidence":  0.8808918751130792,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               97.0,
+                                                                                               309.0
+                                                                                           ],
+                                                                                           [
+                                                                                               618.0,
+                                                                                               309.0
+                                                                                           ],
+                                                                                           [
+                                                                                               618.0,
+                                                                                               362.0
+                                                                                           ],
+                                                                                           [
+                                                                                               97.0,
+                                                                                               362.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "Business plan in Greece=",
+                                                                           "normalized_text":  "business plan in greece",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.9,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.8809,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.9212
+                                                                                     }
+                                                                       }
+                                                                   ],
+                                                  "best_item":  {
+                                                                    "text":  "Business plan in Greece=",
+                                                                    "box":  [
+                                                                                97,
+                                                                                309,
+                                                                                618,
+                                                                                362
+                                                                            ],
+                                                                    "confidence":  0.8808918751130792,
+                                                                    "raw_box":  [
+                                                                                    [
+                                                                                        97.0,
+                                                                                        309.0
+                                                                                    ],
+                                                                                    [
+                                                                                        618.0,
+                                                                                        309.0
+                                                                                    ],
+                                                                                    [
+                                                                                        618.0,
+                                                                                        362.0
+                                                                                    ],
+                                                                                    [
+                                                                                        97.0,
+                                                                                        362.0
+                                                                                    ]
+                                                                                ],
+                                                                    "original_text":  "Business plan in Greece=",
+                                                                    "normalized_text":  "business plan in greece",
+                                                                    "is_empty":  false,
+                                                                    "score":  {
+                                                                                  "text_quality_score":  0.9,
+                                                                                  "size_score":  1.0,
+                                                                                  "position_score":  0.9,
+                                                                                  "confidence_score":  0.8809,
+                                                                                  "noise_penalty":  0.0,
+                                                                                  "final_score":  0.9212
+                                                                              }
+                                                                }
+                                              }
+                          },
+                          {
+                              "group_id":  2,
+                              "start":  7.5,
+                              "end":  2.75,
+                              "duration":  0.0,
+                              "sample_count":  14,
+                              "text":  "Business plan in GreeceE",
+                              "normalized_text":  "business plan in greecee",
+                              "box":  [
+                                          98,
+                                          312,
+                                          620,
+                                          362
+                                      ],
+                              "average_box":  [
+                                                  98,
+                                                  312,
+                                                  620,
+                                                  362
+                                              ],
+                              "confidence":  0.7562,
+                              "score":  {
+                                            "final_score":  0.8962,
+                                            "line_count":  1,
+                                            "source":  "caption_selector",
+                                            "header_only":  false,
+                                            "region_index":  1
+                                        },
+                              "best_sample":  {
+                                                  "sample_index":  10,
+                                                  "time":  2.5,
+                                                  "frame_index":  75,
+                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\6-fb-61583971002344-1792602255036617_dfd4b708\\frame_000010_2.50s.jpg",
+                                                  "region_index":  1,
+                                                  "text":  "Business plan in GreeceE",
+                                                  "normalized_text":  "business plan in greecee",
+                                                  "box":  [
+                                                              98,
+                                                              312,
+                                                              620,
+                                                              362
+                                                          ],
+                                                  "confidence":  0.7562,
+                                                  "score":  {
+                                                                "final_score":  0.8962,
+                                                                "line_count":  1,
+                                                                "source":  "caption_selector",
+                                                                "header_only":  false,
+                                                                "region_index":  1
+                                                            },
+                                                  "source_items":  [
+                                                                       {
+                                                                           "text":  "Business plan in GreeceE",
+                                                                           "box":  [
+                                                                                       98,
+                                                                                       312,
+                                                                                       620,
+                                                                                       362
+                                                                                   ],
+                                                                           "confidence":  0.7562492011149339,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               98.0,
+                                                                                               312.0
+                                                                                           ],
+                                                                                           [
+                                                                                               620.0,
+                                                                                               312.0
+                                                                                           ],
+                                                                                           [
+                                                                                               620.0,
+                                                                                               362.0
+                                                                                           ],
+                                                                                           [
+                                                                                               98.0,
+                                                                                               362.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "Business plan in GreeceE",
+                                                                           "normalized_text":  "business plan in greecee",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.9,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.7562,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.8962
+                                                                                     }
+                                                                       }
+                                                                   ],
+                                                  "best_item":  {
+                                                                    "text":  "Business plan in GreeceE",
+                                                                    "box":  [
+                                                                                98,
+                                                                                312,
+                                                                                620,
+                                                                                362
+                                                                            ],
+                                                                    "confidence":  0.7562492011149339,
+                                                                    "raw_box":  [
+                                                                                    [
+                                                                                        98.0,
+                                                                                        312.0
+                                                                                    ],
+                                                                                    [
+                                                                                        620.0,
+                                                                                        312.0
+                                                                                    ],
+                                                                                    [
+                                                                                        620.0,
+                                                                                        362.0
+                                                                                    ],
+                                                                                    [
+                                                                                        98.0,
+                                                                                        362.0
+                                                                                    ]
+                                                                                ],
+                                                                    "original_text":  "Business plan in GreeceE",
+                                                                    "normalized_text":  "business plan in greecee",
+                                                                    "is_empty":  false,
+                                                                    "score":  {
+                                                                                  "text_quality_score":  0.9,
+                                                                                  "size_score":  1.0,
+                                                                                  "position_score":  0.9,
+                                                                                  "confidence_score":  0.7562,
+                                                                                  "noise_penalty":  0.0,
+                                                                                  "final_score":  0.8962
+                                                                              }
+                                                                }
+                                              }
+                          },
+                          {
+                              "group_id":  3,
+                              "start":  9.5,
+                              "end":  10.5,
+                              "duration":  1.0,
+                              "sample_count":  8,
+                              "text":  "JHIHJZOM",
+                              "normalized_text":  "jhihjzom",
+                              "box":  [
+                                          382,
+                                          1074,
+                                          508,
+                                          1122
+                                      ],
+                              "average_box":  [
+                                                  378,
+                                                  1064,
+                                                  546,
+                                                  1122
+                                              ],
+                              "confidence":  0.9531,
+                              "score":  {
+                                            "final_score":  0.7206,
+                                            "line_count":  1,
+                                            "source":  "caption_selector",
+                                            "header_only":  false,
+                                            "region_index":  2
+                                        },
+                              "best_sample":  {
+                                                  "sample_index":  41,
+                                                  "time":  10.25,
+                                                  "frame_index":  308,
+                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\6-fb-61583971002344-1792602255036617_dfd4b708\\frame_000041_10.25s.jpg",
+                                                  "region_index":  2,
+                                                  "text":  "JHIHJZOM",
+                                                  "normalized_text":  "jhihjzom",
+                                                  "box":  [
+                                                              382,
+                                                              1074,
+                                                              508,
+                                                              1122
+                                                          ],
+                                                  "confidence":  0.9531,
+                                                  "score":  {
+                                                                "final_score":  0.7206,
+                                                                "line_count":  1,
+                                                                "source":  "caption_selector",
+                                                                "header_only":  false,
+                                                                "region_index":  2
+                                                            },
+                                                  "source_items":  [
+                                                                       {
+                                                                           "text":  "JHIHJZOM",
+                                                                           "box":  [
+                                                                                       382,
+                                                                                       1074,
+                                                                                       508,
+                                                                                       1122
+                                                                                   ],
+                                                                           "confidence":  0.9531428798577571,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               382.0,
+                                                                                               1074.0
+                                                                                           ],
+                                                                                           [
+                                                                                               508.0,
+                                                                                               1074.0
+                                                                                           ],
+                                                                                           [
+                                                                                               508.0,
+                                                                                               1122.0
+                                                                                           ],
+                                                                                           [
+                                                                                               382.0,
+                                                                                               1122.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "JHIHJZOM",
+                                                                           "normalized_text":  "jhihjzom",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.65,
+                                                                                         "size_score":  0.65,
+                                                                                         "position_score":  0.7,
+                                                                                         "confidence_score":  0.9531,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.7206
+                                                                                     }
+                                                                       }
+                                                                   ],
+                                                  "best_item":  {
+                                                                    "text":  "JHIHJZOM",
+                                                                    "box":  [
+                                                                                382,
+                                                                                1074,
+                                                                                508,
+                                                                                1122
+                                                                            ],
+                                                                    "confidence":  0.9531428798577571,
+                                                                    "raw_box":  [
+                                                                                    [
+                                                                                        382.0,
+                                                                                        1074.0
+                                                                                    ],
+                                                                                    [
+                                                                                        508.0,
+                                                                                        1074.0
+                                                                                    ],
+                                                                                    [
+                                                                                        508.0,
+                                                                                        1122.0
+                                                                                    ],
+                                                                                    [
+                                                                                        382.0,
+                                                                                        1122.0
+                                                                                    ]
+                                                                                ],
+                                                                    "original_text":  "JHIHJZOM",
+                                                                    "normalized_text":  "jhihjzom",
+                                                                    "is_empty":  false,
+                                                                    "score":  {
+                                                                                  "text_quality_score":  0.65,
+                                                                                  "size_score":  0.65,
+                                                                                  "position_score":  0.7,
+                                                                                  "confidence_score":  0.9531,
+                                                                                  "noise_penalty":  0.0,
+                                                                                  "final_score":  0.7206
+                                                                              }
+                                                                }
+                                              }
+                          },
+                          {
+                              "group_id":  4,
+                              "start":  3.75,
+                              "end":  5.0,
+                              "duration":  1.25,
+                              "sample_count":  5,
+                              "text":  "Business plan in Greecel",
+                              "normalized_text":  "business plan in greecel",
+                              "box":  [
+                                          98,
+                                          312,
+                                          600,
+                                          362
+                                      ],
+                              "average_box":  [
+                                                  98,
+                                                  312,
+                                                  602,
+                                                  362
+                                              ],
+                              "confidence":  0.7458,
+                              "score":  {
+                                            "final_score":  0.8942,
+                                            "line_count":  1,
+                                            "source":  "caption_selector",
+                                            "header_only":  false,
+                                            "region_index":  1
+                                        },
+                              "best_sample":  {
+                                                  "sample_index":  15,
+                                                  "time":  3.75,
+                                                  "frame_index":  112,
+                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\6-fb-61583971002344-1792602255036617_dfd4b708\\frame_000015_3.75s.jpg",
+                                                  "region_index":  1,
+                                                  "text":  "Business plan in Greecel",
+                                                  "normalized_text":  "business plan in greecel",
+                                                  "box":  [
+                                                              98,
+                                                              312,
+                                                              600,
+                                                              362
+                                                          ],
+                                                  "confidence":  0.7458,
+                                                  "score":  {
+                                                                "final_score":  0.8942,
+                                                                "line_count":  1,
+                                                                "source":  "caption_selector",
+                                                                "header_only":  false,
+                                                                "region_index":  1
+                                                            },
+                                                  "source_items":  [
+                                                                       {
+                                                                           "text":  "Business plan in Greecel",
+                                                                           "box":  [
+                                                                                       98,
+                                                                                       312,
+                                                                                       600,
+                                                                                       362
+                                                                                   ],
+                                                                           "confidence":  0.7458031622572001,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               98.0,
+                                                                                               312.0
+                                                                                           ],
+                                                                                           [
+                                                                                               600.0,
+                                                                                               312.0
+                                                                                           ],
+                                                                                           [
+                                                                                               600.0,
+                                                                                               362.0
+                                                                                           ],
+                                                                                           [
+                                                                                               98.0,
+                                                                                               362.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "Business plan in Greecel",
+                                                                           "normalized_text":  "business plan in greecel",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.9,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.7458,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.8942
+                                                                                     }
+                                                                       }
+                                                                   ],
+                                                  "best_item":  {
+                                                                    "text":  "Business plan in Greecel",
+                                                                    "box":  [
+                                                                                98,
+                                                                                312,
+                                                                                600,
+                                                                                362
+                                                                            ],
+                                                                    "confidence":  0.7458031622572001,
+                                                                    "raw_box":  [
+                                                                                    [
+                                                                                        98.0,
+                                                                                        312.0
+                                                                                    ],
+                                                                                    [
+                                                                                        600.0,
+                                                                                        312.0
+                                                                                    ],
+                                                                                    [
+                                                                                        600.0,
+                                                                                        362.0
+                                                                                    ],
+                                                                                    [
+                                                                                        98.0,
+                                                                                        362.0
+                                                                                    ]
+                                                                                ],
+                                                                    "original_text":  "Business plan in Greecel",
+                                                                    "normalized_text":  "business plan in greecel",
+                                                                    "is_empty":  false,
+                                                                    "score":  {
+                                                                                  "text_quality_score":  0.9,
+                                                                                  "size_score":  1.0,
+                                                                                  "position_score":  0.9,
+                                                                                  "confidence_score":  0.7458,
+                                                                                  "noise_penalty":  0.0,
+                                                                                  "final_score":  0.8942
+                                                                              }
+                                                                }
+                                              }
+                          }
+                      ],
+    "final_caption_selection":  {
+                                    "status":  "ok",
+                                    "stage":  "final_caption_selection",
+                                    "input_timeline_count":  4,
+                                    "selected_timeline_count":  0,
+                                    "role_counts":  {
+                                                        "NOISE_TEXT":  3,
+                                                        "SUPPORTING_TEXT":  1
+                                                    },
+                                    "selected_timelines":  [
+
+                                                           ],
+                                    "all_timelines":  [
+                                                          {
+                                                              "group_id":  1,
+                                                              "start":  9.25,
+                                                              "end":  1.0,
+                                                              "duration":  0.0,
+                                                              "sample_count":  44,
+                                                              "text":  "Business plan in Greece=",
+                                                              "normalized_text":  "business plan in greece",
+                                                              "box":  [
+                                                                          97,
+                                                                          309,
+                                                                          618,
+                                                                          362
+                                                                      ],
+                                                              "average_box":  [
+                                                                                  95,
+                                                                                  309,
+                                                                                  622,
+                                                                                  362
+                                                                              ],
+                                                              "confidence":  0.8809,
+                                                              "score":  {
+                                                                            "final_score":  0.9212,
+                                                                            "line_count":  1,
+                                                                            "source":  "caption_selector",
+                                                                            "header_only":  false,
+                                                                            "region_index":  1
+                                                                        },
+                                                              "best_sample":  {
+                                                                                  "sample_index":  3,
+                                                                                  "time":  0.75,
+                                                                                  "frame_index":  22,
+                                                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\6-fb-61583971002344-1792602255036617_dfd4b708\\frame_000003_0.75s.jpg",
+                                                                                  "region_index":  1,
+                                                                                  "text":  "Business plan in Greece=",
+                                                                                  "normalized_text":  "business plan in greece",
+                                                                                  "box":  [
+                                                                                              97,
+                                                                                              309,
+                                                                                              618,
+                                                                                              362
+                                                                                          ],
+                                                                                  "confidence":  0.8809,
+                                                                                  "score":  {
+                                                                                                "final_score":  0.9212,
+                                                                                                "line_count":  1,
+                                                                                                "source":  "caption_selector",
+                                                                                                "header_only":  false,
+                                                                                                "region_index":  1
+                                                                                            },
+                                                                                  "source_items":  [
+                                                                                                       {
+                                                                                                           "text":  "Business plan in Greece=",
+                                                                                                           "box":  [
+                                                                                                                       97,
+                                                                                                                       309,
+                                                                                                                       618,
+                                                                                                                       362
+                                                                                                                   ],
+                                                                                                           "confidence":  0.8808918751130792,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               97.0,
+                                                                                                                               309.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               618.0,
+                                                                                                                               309.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               618.0,
+                                                                                                                               362.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               97.0,
+                                                                                                                               362.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "Business plan in Greece=",
+                                                                                                           "normalized_text":  "business plan in greece",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.9,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.8809,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.9212
+                                                                                                                     }
+                                                                                                       }
+                                                                                                   ],
+                                                                                  "best_item":  {
+                                                                                                    "text":  "Business plan in Greece=",
+                                                                                                    "box":  [
+                                                                                                                97,
+                                                                                                                309,
+                                                                                                                618,
+                                                                                                                362
+                                                                                                            ],
+                                                                                                    "confidence":  0.8808918751130792,
+                                                                                                    "raw_box":  [
+                                                                                                                    [
+                                                                                                                        97.0,
+                                                                                                                        309.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        618.0,
+                                                                                                                        309.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        618.0,
+                                                                                                                        362.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        97.0,
+                                                                                                                        362.0
+                                                                                                                    ]
+                                                                                                                ],
+                                                                                                    "original_text":  "Business plan in Greece=",
+                                                                                                    "normalized_text":  "business plan in greece",
+                                                                                                    "is_empty":  false,
+                                                                                                    "score":  {
+                                                                                                                  "text_quality_score":  0.9,
+                                                                                                                  "size_score":  1.0,
+                                                                                                                  "position_score":  0.9,
+                                                                                                                  "confidence_score":  0.8809,
+                                                                                                                  "noise_penalty":  0.0,
+                                                                                                                  "final_score":  0.9212
+                                                                                                              }
+                                                                                                }
+                                                                              },
+                                                              "caption_role":  "NOISE_TEXT",
+                                                              "should_translate":  false
+                                                          },
+                                                          {
+                                                              "group_id":  2,
+                                                              "start":  7.5,
+                                                              "end":  2.75,
+                                                              "duration":  0.0,
+                                                              "sample_count":  14,
+                                                              "text":  "Business plan in GreeceE",
+                                                              "normalized_text":  "business plan in greecee",
+                                                              "box":  [
+                                                                          98,
+                                                                          312,
+                                                                          620,
+                                                                          362
+                                                                      ],
+                                                              "average_box":  [
+                                                                                  98,
+                                                                                  312,
+                                                                                  620,
+                                                                                  362
+                                                                              ],
+                                                              "confidence":  0.7562,
+                                                              "score":  {
+                                                                            "final_score":  0.8962,
+                                                                            "line_count":  1,
+                                                                            "source":  "caption_selector",
+                                                                            "header_only":  false,
+                                                                            "region_index":  1
+                                                                        },
+                                                              "best_sample":  {
+                                                                                  "sample_index":  10,
+                                                                                  "time":  2.5,
+                                                                                  "frame_index":  75,
+                                                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\6-fb-61583971002344-1792602255036617_dfd4b708\\frame_000010_2.50s.jpg",
+                                                                                  "region_index":  1,
+                                                                                  "text":  "Business plan in GreeceE",
+                                                                                  "normalized_text":  "business plan in greecee",
+                                                                                  "box":  [
+                                                                                              98,
+                                                                                              312,
+                                                                                              620,
+                                                                                              362
+                                                                                          ],
+                                                                                  "confidence":  0.7562,
+                                                                                  "score":  {
+                                                                                                "final_score":  0.8962,
+                                                                                                "line_count":  1,
+                                                                                                "source":  "caption_selector",
+                                                                                                "header_only":  false,
+                                                                                                "region_index":  1
+                                                                                            },
+                                                                                  "source_items":  [
+                                                                                                       {
+                                                                                                           "text":  "Business plan in GreeceE",
+                                                                                                           "box":  [
+                                                                                                                       98,
+                                                                                                                       312,
+                                                                                                                       620,
+                                                                                                                       362
+                                                                                                                   ],
+                                                                                                           "confidence":  0.7562492011149339,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               98.0,
+                                                                                                                               312.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               620.0,
+                                                                                                                               312.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               620.0,
+                                                                                                                               362.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               98.0,
+                                                                                                                               362.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "Business plan in GreeceE",
+                                                                                                           "normalized_text":  "business plan in greecee",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.9,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.7562,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.8962
+                                                                                                                     }
+                                                                                                       }
+                                                                                                   ],
+                                                                                  "best_item":  {
+                                                                                                    "text":  "Business plan in GreeceE",
+                                                                                                    "box":  [
+                                                                                                                98,
+                                                                                                                312,
+                                                                                                                620,
+                                                                                                                362
+                                                                                                            ],
+                                                                                                    "confidence":  0.7562492011149339,
+                                                                                                    "raw_box":  [
+                                                                                                                    [
+                                                                                                                        98.0,
+                                                                                                                        312.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        620.0,
+                                                                                                                        312.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        620.0,
+                                                                                                                        362.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        98.0,
+                                                                                                                        362.0
+                                                                                                                    ]
+                                                                                                                ],
+                                                                                                    "original_text":  "Business plan in GreeceE",
+                                                                                                    "normalized_text":  "business plan in greecee",
+                                                                                                    "is_empty":  false,
+                                                                                                    "score":  {
+                                                                                                                  "text_quality_score":  0.9,
+                                                                                                                  "size_score":  1.0,
+                                                                                                                  "position_score":  0.9,
+                                                                                                                  "confidence_score":  0.7562,
+                                                                                                                  "noise_penalty":  0.0,
+                                                                                                                  "final_score":  0.8962
+                                                                                                              }
+                                                                                                }
+                                                                              },
+                                                              "caption_role":  "NOISE_TEXT",
+                                                              "should_translate":  false
+                                                          },
+                                                          {
+                                                              "group_id":  3,
+                                                              "start":  9.5,
+                                                              "end":  10.5,
+                                                              "duration":  1.0,
+                                                              "sample_count":  8,
+                                                              "text":  "JHIHJZOM",
+                                                              "normalized_text":  "jhihjzom",
+                                                              "box":  [
+                                                                          382,
+                                                                          1074,
+                                                                          508,
+                                                                          1122
+                                                                      ],
+                                                              "average_box":  [
+                                                                                  378,
+                                                                                  1064,
+                                                                                  546,
+                                                                                  1122
+                                                                              ],
+                                                              "confidence":  0.9531,
+                                                              "score":  {
+                                                                            "final_score":  0.7206,
+                                                                            "line_count":  1,
+                                                                            "source":  "caption_selector",
+                                                                            "header_only":  false,
+                                                                            "region_index":  2
+                                                                        },
+                                                              "best_sample":  {
+                                                                                  "sample_index":  41,
+                                                                                  "time":  10.25,
+                                                                                  "frame_index":  308,
+                                                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\6-fb-61583971002344-1792602255036617_dfd4b708\\frame_000041_10.25s.jpg",
+                                                                                  "region_index":  2,
+                                                                                  "text":  "JHIHJZOM",
+                                                                                  "normalized_text":  "jhihjzom",
+                                                                                  "box":  [
+                                                                                              382,
+                                                                                              1074,
+                                                                                              508,
+                                                                                              1122
+                                                                                          ],
+                                                                                  "confidence":  0.9531,
+                                                                                  "score":  {
+                                                                                                "final_score":  0.7206,
+                                                                                                "line_count":  1,
+                                                                                                "source":  "caption_selector",
+                                                                                                "header_only":  false,
+                                                                                                "region_index":  2
+                                                                                            },
+                                                                                  "source_items":  [
+                                                                                                       {
+                                                                                                           "text":  "JHIHJZOM",
+                                                                                                           "box":  [
+                                                                                                                       382,
+                                                                                                                       1074,
+                                                                                                                       508,
+                                                                                                                       1122
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9531428798577571,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               382.0,
+                                                                                                                               1074.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               508.0,
+                                                                                                                               1074.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               508.0,
+                                                                                                                               1122.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               382.0,
+                                                                                                                               1122.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "JHIHJZOM",
+                                                                                                           "normalized_text":  "jhihjzom",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.65,
+                                                                                                                         "size_score":  0.65,
+                                                                                                                         "position_score":  0.7,
+                                                                                                                         "confidence_score":  0.9531,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.7206
+                                                                                                                     }
+                                                                                                       }
+                                                                                                   ],
+                                                                                  "best_item":  {
+                                                                                                    "text":  "JHIHJZOM",
+                                                                                                    "box":  [
+                                                                                                                382,
+                                                                                                                1074,
+                                                                                                                508,
+                                                                                                                1122
+                                                                                                            ],
+                                                                                                    "confidence":  0.9531428798577571,
+                                                                                                    "raw_box":  [
+                                                                                                                    [
+                                                                                                                        382.0,
+                                                                                                                        1074.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        508.0,
+                                                                                                                        1074.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        508.0,
+                                                                                                                        1122.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        382.0,
+                                                                                                                        1122.0
+                                                                                                                    ]
+                                                                                                                ],
+                                                                                                    "original_text":  "JHIHJZOM",
+                                                                                                    "normalized_text":  "jhihjzom",
+                                                                                                    "is_empty":  false,
+                                                                                                    "score":  {
+                                                                                                                  "text_quality_score":  0.65,
+                                                                                                                  "size_score":  0.65,
+                                                                                                                  "position_score":  0.7,
+                                                                                                                  "confidence_score":  0.9531,
+                                                                                                                  "noise_penalty":  0.0,
+                                                                                                                  "final_score":  0.7206
+                                                                                                              }
+                                                                                                }
+                                                                              },
+                                                              "caption_role":  "NOISE_TEXT",
+                                                              "should_translate":  false
+                                                          },
+                                                          {
+                                                              "group_id":  4,
+                                                              "start":  3.75,
+                                                              "end":  5.0,
+                                                              "duration":  1.25,
+                                                              "sample_count":  5,
+                                                              "text":  "Business plan in Greecel",
+                                                              "normalized_text":  "business plan in greecel",
+                                                              "box":  [
+                                                                          98,
+                                                                          312,
+                                                                          600,
+                                                                          362
+                                                                      ],
+                                                              "average_box":  [
+                                                                                  98,
+                                                                                  312,
+                                                                                  602,
+                                                                                  362
+                                                                              ],
+                                                              "confidence":  0.7458,
+                                                              "score":  {
+                                                                            "final_score":  0.8942,
+                                                                            "line_count":  1,
+                                                                            "source":  "caption_selector",
+                                                                            "header_only":  false,
+                                                                            "region_index":  1
+                                                                        },
+                                                              "best_sample":  {
+                                                                                  "sample_index":  15,
+                                                                                  "time":  3.75,
+                                                                                  "frame_index":  112,
+                                                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\6-fb-61583971002344-1792602255036617_dfd4b708\\frame_000015_3.75s.jpg",
+                                                                                  "region_index":  1,
+                                                                                  "text":  "Business plan in Greecel",
+                                                                                  "normalized_text":  "business plan in greecel",
+                                                                                  "box":  [
+                                                                                              98,
+                                                                                              312,
+                                                                                              600,
+                                                                                              362
+                                                                                          ],
+                                                                                  "confidence":  0.7458,
+                                                                                  "score":  {
+                                                                                                "final_score":  0.8942,
+                                                                                                "line_count":  1,
+                                                                                                "source":  "caption_selector",
+                                                                                                "header_only":  false,
+                                                                                                "region_index":  1
+                                                                                            },
+                                                                                  "source_items":  [
+                                                                                                       {
+                                                                                                           "text":  "Business plan in Greecel",
+                                                                                                           "box":  [
+                                                                                                                       98,
+                                                                                                                       312,
+                                                                                                                       600,
+                                                                                                                       362
+                                                                                                                   ],
+                                                                                                           "confidence":  0.7458031622572001,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               98.0,
+                                                                                                                               312.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               600.0,
+                                                                                                                               312.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               600.0,
+                                                                                                                               362.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               98.0,
+                                                                                                                               362.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "Business plan in Greecel",
+                                                                                                           "normalized_text":  "business plan in greecel",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.9,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.7458,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.8942
+                                                                                                                     }
+                                                                                                       }
+                                                                                                   ],
+                                                                                  "best_item":  {
+                                                                                                    "text":  "Business plan in Greecel",
+                                                                                                    "box":  [
+                                                                                                                98,
+                                                                                                                312,
+                                                                                                                600,
+                                                                                                                362
+                                                                                                            ],
+                                                                                                    "confidence":  0.7458031622572001,
+                                                                                                    "raw_box":  [
+                                                                                                                    [
+                                                                                                                        98.0,
+                                                                                                                        312.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        600.0,
+                                                                                                                        312.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        600.0,
+                                                                                                                        362.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        98.0,
+                                                                                                                        362.0
+                                                                                                                    ]
+                                                                                                                ],
+                                                                                                    "original_text":  "Business plan in Greecel",
+                                                                                                    "normalized_text":  "business plan in greecel",
+                                                                                                    "is_empty":  false,
+                                                                                                    "score":  {
+                                                                                                                  "text_quality_score":  0.9,
+                                                                                                                  "size_score":  1.0,
+                                                                                                                  "position_score":  0.9,
+                                                                                                                  "confidence_score":  0.7458,
+                                                                                                                  "noise_penalty":  0.0,
+                                                                                                                  "final_score":  0.8942
+                                                                                                              }
+                                                                                                }
+                                                                              },
+                                                              "caption_role":  "SUPPORTING_TEXT",
+                                                              "should_translate":  false
+                                                          }
+                                                      ]
+                                },
+    "selected_timelines":  [
+
+                           ]
+}

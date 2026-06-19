@@ -1,0 +1,15 @@
+{
+  "status": "ok",
+  "stage": "regression_fail_only",
+  "video_count": 20,
+  "fail_count": 0,
+  "flag_counts": {},
+  "role_counts_total": {
+    "MAIN_CAPTION_TEXT": 24,
+    "NOISE_TEXT": 46,
+    "CHARACTER_LABEL_TEXT": 9,
+    "SUPPORTING_TEXT": 16,
+    "DOCUMENT_NOISE_TEXT": 12
+  },
+  "fail_videos": []
+}

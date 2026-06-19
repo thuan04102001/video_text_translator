@@ -1,0 +1,1783 @@
+﻿{
+    "status":  "ok",
+    "video_path":  "D:\\KTTND\\Page01_Meme\\C\\9-fb-61583971002344-1626244598635059.mp4",
+    "video_name":  "9-fb-61583971002344-1626244598635059.mp4",
+    "video_info":  {
+                       "video_path":  "D:\\KTTND\\Page01_Meme\\C\\9-fb-61583971002344-1626244598635059.mp4",
+                       "fps":  30.0,
+                       "frame_count":  783,
+                       "width":  720,
+                       "height":  1280,
+                       "duration":  26.1
+                   },
+    "settings":  {
+                     "interval_sec":  0.25,
+                     "max_frames":  0,
+                     "languages":  [
+                                       "en"
+                                   ],
+                     "gpu_requested":  null,
+                     "gpu_resolved":  true,
+                     "min_confidence":  0.15,
+                     "min_score":  0.55,
+                     "max_gap_sec":  0.6,
+                     "similarity_threshold":  0.58,
+                     "token_threshold":  0.55,
+                     "min_box_similarity":  0.38,
+                     "min_timeline_samples":  1
+                 },
+    "summary":  {
+                    "sample_count":  105,
+                    "ocr_frame_count":  105,
+                    "total_ocr_items":  489,
+                    "candidate_count":  138,
+                    "timeline_count":  3,
+                    "selected_timeline_count":  2,
+                    "role_counts":  {
+                                        "MAIN_CAPTION_TEXT":  2,
+                                        "SUPPORTING_TEXT":  1
+                                    }
+                },
+    "raw_timelines":  [
+                          {
+                              "group_id":  1,
+                              "start":  0.0,
+                              "end":  26.1,
+                              "duration":  26.1,
+                              "sample_count":  105,
+                              "text":  "POV: bro when he hears 67",
+                              "normalized_text":  "pov bro when he hears 67",
+                              "box":  [
+                                          81,
+                                          233,
+                                          643,
+                                          361
+                                      ],
+                              "average_box":  [
+                                                  80,
+                                                  231,
+                                                  644,
+                                                  363
+                                              ],
+                              "confidence":  0.9969,
+                              "score":  {
+                                            "final_score":  0.9444,
+                                            "line_count":  2,
+                                            "source":  "caption_selector",
+                                            "header_only":  false,
+                                            "region_index":  1
+                                        },
+                              "best_sample":  {
+                                                  "sample_index":  16,
+                                                  "time":  4.0,
+                                                  "frame_index":  120,
+                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\9-fb-61583971002344-1626244598635059_9cb8a470\\frame_000016_4.00s.jpg",
+                                                  "region_index":  1,
+                                                  "text":  "POV: bro when he hears 67",
+                                                  "normalized_text":  "pov bro when he hears 67",
+                                                  "box":  [
+                                                              81,
+                                                              233,
+                                                              643,
+                                                              361
+                                                          ],
+                                                  "confidence":  0.9969,
+                                                  "score":  {
+                                                                "final_score":  0.9444,
+                                                                "line_count":  2,
+                                                                "source":  "caption_selector",
+                                                                "header_only":  false,
+                                                                "region_index":  1
+                                                            },
+                                                  "source_items":  [
+                                                                       {
+                                                                           "text":  "POV: bro when he",
+                                                                           "box":  [
+                                                                                       81,
+                                                                                       233,
+                                                                                       643,
+                                                                                       297
+                                                                                   ],
+                                                                           "confidence":  0.9939222156726826,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               81.0,
+                                                                                               233.0
+                                                                                           ],
+                                                                                           [
+                                                                                               643.0,
+                                                                                               233.0
+                                                                                           ],
+                                                                                           [
+                                                                                               643.0,
+                                                                                               297.0
+                                                                                           ],
+                                                                                           [
+                                                                                               81.0,
+                                                                                               297.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "POV: bro when he",
+                                                                           "normalized_text":  "pov bro when he",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.9,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.9939,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.9438
+                                                                                     }
+                                                                       },
+                                                                       {
+                                                                           "text":  "hears 67",
+                                                                           "box":  [
+                                                                                       227,
+                                                                                       299,
+                                                                                       493,
+                                                                                       361
+                                                                                   ],
+                                                                           "confidence":  0.9998574606528798,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               227.0,
+                                                                                               299.0
+                                                                                           ],
+                                                                                           [
+                                                                                               493.0,
+                                                                                               299.0
+                                                                                           ],
+                                                                                           [
+                                                                                               493.0,
+                                                                                               361.0
+                                                                                           ],
+                                                                                           [
+                                                                                               227.0,
+                                                                                               361.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "hears 67",
+                                                                           "normalized_text":  "hears 67",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.9,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.9999,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.945
+                                                                                     }
+                                                                       }
+                                                                   ],
+                                                  "best_item":  {
+                                                                    "text":  "hears 67",
+                                                                    "box":  [
+                                                                                227,
+                                                                                299,
+                                                                                493,
+                                                                                361
+                                                                            ],
+                                                                    "confidence":  0.9998574606528798,
+                                                                    "raw_box":  [
+                                                                                    [
+                                                                                        227.0,
+                                                                                        299.0
+                                                                                    ],
+                                                                                    [
+                                                                                        493.0,
+                                                                                        299.0
+                                                                                    ],
+                                                                                    [
+                                                                                        493.0,
+                                                                                        361.0
+                                                                                    ],
+                                                                                    [
+                                                                                        227.0,
+                                                                                        361.0
+                                                                                    ]
+                                                                                ],
+                                                                    "original_text":  "hears 67",
+                                                                    "normalized_text":  "hears 67",
+                                                                    "is_empty":  false,
+                                                                    "score":  {
+                                                                                  "text_quality_score":  0.9,
+                                                                                  "size_score":  1.0,
+                                                                                  "position_score":  0.9,
+                                                                                  "confidence_score":  0.9999,
+                                                                                  "noise_penalty":  0.0,
+                                                                                  "final_score":  0.945
+                                                                              }
+                                                                }
+                                              }
+                          },
+                          {
+                              "group_id":  2,
+                              "start":  21.0,
+                              "end":  26.1,
+                              "duration":  5.100000000000001,
+                              "sample_count":  21,
+                              "text":  "Teacher:",
+                              "normalized_text":  "teacher",
+                              "box":  [
+                                          193,
+                                          465,
+                                          543,
+                                          551
+                                      ],
+                              "average_box":  [
+                                                  181,
+                                                  465,
+                                                  543,
+                                                  575
+                                              ],
+                              "confidence":  0.9844,
+                              "score":  {
+                                            "final_score":  0.8544,
+                                            "line_count":  1,
+                                            "source":  "caption_selector",
+                                            "header_only":  false,
+                                            "region_index":  2
+                                        },
+                              "best_sample":  {
+                                                  "sample_index":  104,
+                                                  "time":  26.0,
+                                                  "frame_index":  780,
+                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\9-fb-61583971002344-1626244598635059_9cb8a470\\frame_000104_26.00s.jpg",
+                                                  "region_index":  2,
+                                                  "text":  "Teacher:",
+                                                  "normalized_text":  "teacher",
+                                                  "box":  [
+                                                              193,
+                                                              465,
+                                                              543,
+                                                              551
+                                                          ],
+                                                  "confidence":  0.9844,
+                                                  "score":  {
+                                                                "final_score":  0.8544,
+                                                                "line_count":  1,
+                                                                "source":  "caption_selector",
+                                                                "header_only":  false,
+                                                                "region_index":  2
+                                                            },
+                                                  "source_items":  [
+                                                                       {
+                                                                           "text":  "Teacher:",
+                                                                           "box":  [
+                                                                                       193,
+                                                                                       465,
+                                                                                       543,
+                                                                                       551
+                                                                                   ],
+                                                                           "confidence":  0.9844206561591787,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               193.0,
+                                                                                               465.0
+                                                                                           ],
+                                                                                           [
+                                                                                               543.0,
+                                                                                               465.0
+                                                                                           ],
+                                                                                           [
+                                                                                               543.0,
+                                                                                               551.0
+                                                                                           ],
+                                                                                           [
+                                                                                               193.0,
+                                                                                               551.0
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "Teacher:",
+                                                                           "normalized_text":  "teacher",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.65,
+                                                                                         "size_score":  1.0,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.9844,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.8544
+                                                                                     }
+                                                                       }
+                                                                   ],
+                                                  "best_item":  {
+                                                                    "text":  "Teacher:",
+                                                                    "box":  [
+                                                                                193,
+                                                                                465,
+                                                                                543,
+                                                                                551
+                                                                            ],
+                                                                    "confidence":  0.9844206561591787,
+                                                                    "raw_box":  [
+                                                                                    [
+                                                                                        193.0,
+                                                                                        465.0
+                                                                                    ],
+                                                                                    [
+                                                                                        543.0,
+                                                                                        465.0
+                                                                                    ],
+                                                                                    [
+                                                                                        543.0,
+                                                                                        551.0
+                                                                                    ],
+                                                                                    [
+                                                                                        193.0,
+                                                                                        551.0
+                                                                                    ]
+                                                                                ],
+                                                                    "original_text":  "Teacher:",
+                                                                    "normalized_text":  "teacher",
+                                                                    "is_empty":  false,
+                                                                    "score":  {
+                                                                                  "text_quality_score":  0.65,
+                                                                                  "size_score":  1.0,
+                                                                                  "position_score":  0.9,
+                                                                                  "confidence_score":  0.9844,
+                                                                                  "noise_penalty":  0.0,
+                                                                                  "final_score":  0.8544
+                                                                              }
+                                                                }
+                                              }
+                          },
+                          {
+                              "group_id":  3,
+                              "start":  3.75,
+                              "end":  6.75,
+                              "duration":  3.0,
+                              "sample_count":  12,
+                              "text":  "page on? What are",
+                              "normalized_text":  "page on what are",
+                              "box":  [
+                                          78,
+                                          593,
+                                          363,
+                                          784
+                                      ],
+                              "average_box":  [
+                                                  78,
+                                                  593,
+                                                  363,
+                                                  784
+                                              ],
+                              "confidence":  0.999,
+                              "score":  {
+                                            "final_score":  0.7129,
+                                            "line_count":  4,
+                                            "source":  "caption_selector",
+                                            "header_only":  false,
+                                            "region_index":  2
+                                        },
+                              "best_sample":  {
+                                                  "sample_index":  20,
+                                                  "time":  5.0,
+                                                  "frame_index":  150,
+                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\9-fb-61583971002344-1626244598635059_9cb8a470\\frame_000020_5.00s.jpg",
+                                                  "region_index":  2,
+                                                  "text":  "page on? What are",
+                                                  "normalized_text":  "page on what are",
+                                                  "box":  [
+                                                              78,
+                                                              593,
+                                                              363,
+                                                              784
+                                                          ],
+                                                  "confidence":  0.999,
+                                                  "score":  {
+                                                                "final_score":  0.7129,
+                                                                "line_count":  4,
+                                                                "source":  "caption_selector",
+                                                                "header_only":  false,
+                                                                "region_index":  2
+                                                            },
+                                                  "source_items":  [
+                                                                       {
+                                                                           "text":  "page",
+                                                                           "box":  [
+                                                                                       201,
+                                                                                       593,
+                                                                                       341,
+                                                                                       695
+                                                                                   ],
+                                                                           "confidence":  0.9999998807907104,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               201.08460847688576,
+                                                                                               644.55922593382
+                                                                                           ],
+                                                                                           [
+                                                                                               322.24264068711926,
+                                                                                               593.7573593128807
+                                                                                           ],
+                                                                                           [
+                                                                                               341.91539152311424,
+                                                                                               644.44077406618
+                                                                                           ],
+                                                                                           [
+                                                                                               220.7573593128807,
+                                                                                               695.2426406871193
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "page",
+                                                                           "normalized_text":  "page",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.65,
+                                                                                         "size_score":  0.8,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  1.0,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.8075
+                                                                                     }
+                                                                       },
+                                                                       {
+                                                                           "text":  "on?",
+                                                                           "box":  [
+                                                                                       255,
+                                                                                       627,
+                                                                                       363,
+                                                                                       721
+                                                                                   ],
+                                                                           "confidence":  0.9959749319269648,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               255.08460847688576,
+                                                                                               674.55922593382
+                                                                                           ],
+                                                                                           [
+                                                                                               339.22913372267027,
+                                                                                               627.9430547361956
+                                                                                           ],
+                                                                                           [
+                                                                                               363.91539152311424,
+                                                                                               674.44077406618
+                                                                                           ],
+                                                                                           [
+                                                                                               279.77086627732973,
+                                                                                               721.0569452638044
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "on?",
+                                                                           "normalized_text":  "on",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.1,
+                                                                                         "size_score":  0.8,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.996,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.6142
+                                                                                     }
+                                                                       },
+                                                                       {
+                                                                           "text":  "What",
+                                                                           "box":  [
+                                                                                       78,
+                                                                                       641,
+                                                                                       222,
+                                                                                       743
+                                                                                   ],
+                                                                           "confidence":  0.9998523592948914,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               78.75735931288071,
+                                                                                               692.7573593128807
+                                                                                           ],
+                                                                                           [
+                                                                                               203.33099976640855,
+                                                                                               641.8475981621032
+                                                                                           ],
+                                                                                           [
+                                                                                               222.2426406871193,
+                                                                                               691.2426406871193
+                                                                                           ],
+                                                                                           [
+                                                                                               97.66900023359146,
+                                                                                               743.1524018378968
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "What",
+                                                                           "normalized_text":  "what",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.65,
+                                                                                         "size_score":  0.8,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  0.9999,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.8075
+                                                                                     }
+                                                                       },
+                                                                       {
+                                                                           "text":  "are",
+                                                                           "box":  [
+                                                                                       106,
+                                                                                       708,
+                                                                                       204,
+                                                                                       784
+                                                                                   ],
+                                                                           "confidence":  0.9999957328192642,
+                                                                           "raw_box":  [
+                                                                                           [
+                                                                                               106.21086857389425,
+                                                                                               743.5632605721682
+                                                                                           ],
+                                                                                           [
+                                                                                               187.18440723498145,
+                                                                                               708.1451912418645
+                                                                                           ],
+                                                                                           [
+                                                                                               204.78913142610577,
+                                                                                               749.4367394278318
+                                                                                           ],
+                                                                                           [
+                                                                                               123.81559276501854,
+                                                                                               784.8548087581355
+                                                                                           ]
+                                                                                       ],
+                                                                           "original_text":  "are",
+                                                                           "normalized_text":  "are",
+                                                                           "is_empty":  false,
+                                                                           "score":  {
+                                                                                         "text_quality_score":  0.3,
+                                                                                         "size_score":  0.55,
+                                                                                         "position_score":  0.9,
+                                                                                         "confidence_score":  1.0,
+                                                                                         "noise_penalty":  0.0,
+                                                                                         "final_score":  0.6225
+                                                                                     }
+                                                                       }
+                                                                   ],
+                                                  "best_item":  {
+                                                                    "text":  "page",
+                                                                    "box":  [
+                                                                                201,
+                                                                                593,
+                                                                                341,
+                                                                                695
+                                                                            ],
+                                                                    "confidence":  0.9999998807907104,
+                                                                    "raw_box":  [
+                                                                                    [
+                                                                                        201.08460847688576,
+                                                                                        644.55922593382
+                                                                                    ],
+                                                                                    [
+                                                                                        322.24264068711926,
+                                                                                        593.7573593128807
+                                                                                    ],
+                                                                                    [
+                                                                                        341.91539152311424,
+                                                                                        644.44077406618
+                                                                                    ],
+                                                                                    [
+                                                                                        220.7573593128807,
+                                                                                        695.2426406871193
+                                                                                    ]
+                                                                                ],
+                                                                    "original_text":  "page",
+                                                                    "normalized_text":  "page",
+                                                                    "is_empty":  false,
+                                                                    "score":  {
+                                                                                  "text_quality_score":  0.65,
+                                                                                  "size_score":  0.8,
+                                                                                  "position_score":  0.9,
+                                                                                  "confidence_score":  1.0,
+                                                                                  "noise_penalty":  0.0,
+                                                                                  "final_score":  0.8075
+                                                                              }
+                                                                }
+                                              }
+                          }
+                      ],
+    "final_caption_selection":  {
+                                    "status":  "ok",
+                                    "stage":  "final_caption_selection",
+                                    "input_timeline_count":  3,
+                                    "selected_timeline_count":  2,
+                                    "role_counts":  {
+                                                        "MAIN_CAPTION_TEXT":  2,
+                                                        "SUPPORTING_TEXT":  1
+                                                    },
+                                    "selected_timelines":  [
+                                                               {
+                                                                   "group_id":  1,
+                                                                   "start":  0.0,
+                                                                   "end":  26.1,
+                                                                   "duration":  26.1,
+                                                                   "sample_count":  105,
+                                                                   "text":  "POV: bro when he hears 67",
+                                                                   "normalized_text":  "pov bro when he hears 67",
+                                                                   "box":  [
+                                                                               81,
+                                                                               233,
+                                                                               643,
+                                                                               361
+                                                                           ],
+                                                                   "average_box":  [
+                                                                                       80,
+                                                                                       231,
+                                                                                       644,
+                                                                                       363
+                                                                                   ],
+                                                                   "confidence":  0.9969,
+                                                                   "score":  {
+                                                                                 "final_score":  0.9444,
+                                                                                 "line_count":  2,
+                                                                                 "source":  "caption_selector",
+                                                                                 "header_only":  false,
+                                                                                 "region_index":  1
+                                                                             },
+                                                                   "best_sample":  {
+                                                                                       "sample_index":  16,
+                                                                                       "time":  4.0,
+                                                                                       "frame_index":  120,
+                                                                                       "image_path":  "temp/analyze_frame_samples\\frame_samples\\9-fb-61583971002344-1626244598635059_9cb8a470\\frame_000016_4.00s.jpg",
+                                                                                       "region_index":  1,
+                                                                                       "text":  "POV: bro when he hears 67",
+                                                                                       "normalized_text":  "pov bro when he hears 67",
+                                                                                       "box":  [
+                                                                                                   81,
+                                                                                                   233,
+                                                                                                   643,
+                                                                                                   361
+                                                                                               ],
+                                                                                       "confidence":  0.9969,
+                                                                                       "score":  {
+                                                                                                     "final_score":  0.9444,
+                                                                                                     "line_count":  2,
+                                                                                                     "source":  "caption_selector",
+                                                                                                     "header_only":  false,
+                                                                                                     "region_index":  1
+                                                                                                 },
+                                                                                       "source_items":  [
+                                                                                                            {
+                                                                                                                "text":  "POV: bro when he",
+                                                                                                                "box":  [
+                                                                                                                            81,
+                                                                                                                            233,
+                                                                                                                            643,
+                                                                                                                            297
+                                                                                                                        ],
+                                                                                                                "confidence":  0.9939222156726826,
+                                                                                                                "raw_box":  [
+                                                                                                                                [
+                                                                                                                                    81.0,
+                                                                                                                                    233.0
+                                                                                                                                ],
+                                                                                                                                [
+                                                                                                                                    643.0,
+                                                                                                                                    233.0
+                                                                                                                                ],
+                                                                                                                                [
+                                                                                                                                    643.0,
+                                                                                                                                    297.0
+                                                                                                                                ],
+                                                                                                                                [
+                                                                                                                                    81.0,
+                                                                                                                                    297.0
+                                                                                                                                ]
+                                                                                                                            ],
+                                                                                                                "original_text":  "POV: bro when he",
+                                                                                                                "normalized_text":  "pov bro when he",
+                                                                                                                "is_empty":  false,
+                                                                                                                "score":  {
+                                                                                                                              "text_quality_score":  0.9,
+                                                                                                                              "size_score":  1.0,
+                                                                                                                              "position_score":  0.9,
+                                                                                                                              "confidence_score":  0.9939,
+                                                                                                                              "noise_penalty":  0.0,
+                                                                                                                              "final_score":  0.9438
+                                                                                                                          }
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "text":  "hears 67",
+                                                                                                                "box":  [
+                                                                                                                            227,
+                                                                                                                            299,
+                                                                                                                            493,
+                                                                                                                            361
+                                                                                                                        ],
+                                                                                                                "confidence":  0.9998574606528798,
+                                                                                                                "raw_box":  [
+                                                                                                                                [
+                                                                                                                                    227.0,
+                                                                                                                                    299.0
+                                                                                                                                ],
+                                                                                                                                [
+                                                                                                                                    493.0,
+                                                                                                                                    299.0
+                                                                                                                                ],
+                                                                                                                                [
+                                                                                                                                    493.0,
+                                                                                                                                    361.0
+                                                                                                                                ],
+                                                                                                                                [
+                                                                                                                                    227.0,
+                                                                                                                                    361.0
+                                                                                                                                ]
+                                                                                                                            ],
+                                                                                                                "original_text":  "hears 67",
+                                                                                                                "normalized_text":  "hears 67",
+                                                                                                                "is_empty":  false,
+                                                                                                                "score":  {
+                                                                                                                              "text_quality_score":  0.9,
+                                                                                                                              "size_score":  1.0,
+                                                                                                                              "position_score":  0.9,
+                                                                                                                              "confidence_score":  0.9999,
+                                                                                                                              "noise_penalty":  0.0,
+                                                                                                                              "final_score":  0.945
+                                                                                                                          }
+                                                                                                            }
+                                                                                                        ],
+                                                                                       "best_item":  {
+                                                                                                         "text":  "hears 67",
+                                                                                                         "box":  [
+                                                                                                                     227,
+                                                                                                                     299,
+                                                                                                                     493,
+                                                                                                                     361
+                                                                                                                 ],
+                                                                                                         "confidence":  0.9998574606528798,
+                                                                                                         "raw_box":  [
+                                                                                                                         [
+                                                                                                                             227.0,
+                                                                                                                             299.0
+                                                                                                                         ],
+                                                                                                                         [
+                                                                                                                             493.0,
+                                                                                                                             299.0
+                                                                                                                         ],
+                                                                                                                         [
+                                                                                                                             493.0,
+                                                                                                                             361.0
+                                                                                                                         ],
+                                                                                                                         [
+                                                                                                                             227.0,
+                                                                                                                             361.0
+                                                                                                                         ]
+                                                                                                                     ],
+                                                                                                         "original_text":  "hears 67",
+                                                                                                         "normalized_text":  "hears 67",
+                                                                                                         "is_empty":  false,
+                                                                                                         "score":  {
+                                                                                                                       "text_quality_score":  0.9,
+                                                                                                                       "size_score":  1.0,
+                                                                                                                       "position_score":  0.9,
+                                                                                                                       "confidence_score":  0.9999,
+                                                                                                                       "noise_penalty":  0.0,
+                                                                                                                       "final_score":  0.945
+                                                                                                                   }
+                                                                                                     }
+                                                                                   },
+                                                                   "caption_role":  "MAIN_CAPTION_TEXT",
+                                                                   "should_translate":  true
+                                                               },
+                                                               {
+                                                                   "group_id":  2,
+                                                                   "start":  21.0,
+                                                                   "end":  26.1,
+                                                                   "duration":  5.100000000000001,
+                                                                   "sample_count":  21,
+                                                                   "text":  "Teacher:",
+                                                                   "normalized_text":  "teacher",
+                                                                   "box":  [
+                                                                               193,
+                                                                               465,
+                                                                               543,
+                                                                               551
+                                                                           ],
+                                                                   "average_box":  [
+                                                                                       181,
+                                                                                       465,
+                                                                                       543,
+                                                                                       575
+                                                                                   ],
+                                                                   "confidence":  0.9844,
+                                                                   "score":  {
+                                                                                 "final_score":  0.8544,
+                                                                                 "line_count":  1,
+                                                                                 "source":  "caption_selector",
+                                                                                 "header_only":  false,
+                                                                                 "region_index":  2
+                                                                             },
+                                                                   "best_sample":  {
+                                                                                       "sample_index":  104,
+                                                                                       "time":  26.0,
+                                                                                       "frame_index":  780,
+                                                                                       "image_path":  "temp/analyze_frame_samples\\frame_samples\\9-fb-61583971002344-1626244598635059_9cb8a470\\frame_000104_26.00s.jpg",
+                                                                                       "region_index":  2,
+                                                                                       "text":  "Teacher:",
+                                                                                       "normalized_text":  "teacher",
+                                                                                       "box":  [
+                                                                                                   193,
+                                                                                                   465,
+                                                                                                   543,
+                                                                                                   551
+                                                                                               ],
+                                                                                       "confidence":  0.9844,
+                                                                                       "score":  {
+                                                                                                     "final_score":  0.8544,
+                                                                                                     "line_count":  1,
+                                                                                                     "source":  "caption_selector",
+                                                                                                     "header_only":  false,
+                                                                                                     "region_index":  2
+                                                                                                 },
+                                                                                       "source_items":  [
+                                                                                                            {
+                                                                                                                "text":  "Teacher:",
+                                                                                                                "box":  [
+                                                                                                                            193,
+                                                                                                                            465,
+                                                                                                                            543,
+                                                                                                                            551
+                                                                                                                        ],
+                                                                                                                "confidence":  0.9844206561591787,
+                                                                                                                "raw_box":  [
+                                                                                                                                [
+                                                                                                                                    193.0,
+                                                                                                                                    465.0
+                                                                                                                                ],
+                                                                                                                                [
+                                                                                                                                    543.0,
+                                                                                                                                    465.0
+                                                                                                                                ],
+                                                                                                                                [
+                                                                                                                                    543.0,
+                                                                                                                                    551.0
+                                                                                                                                ],
+                                                                                                                                [
+                                                                                                                                    193.0,
+                                                                                                                                    551.0
+                                                                                                                                ]
+                                                                                                                            ],
+                                                                                                                "original_text":  "Teacher:",
+                                                                                                                "normalized_text":  "teacher",
+                                                                                                                "is_empty":  false,
+                                                                                                                "score":  {
+                                                                                                                              "text_quality_score":  0.65,
+                                                                                                                              "size_score":  1.0,
+                                                                                                                              "position_score":  0.9,
+                                                                                                                              "confidence_score":  0.9844,
+                                                                                                                              "noise_penalty":  0.0,
+                                                                                                                              "final_score":  0.8544
+                                                                                                                          }
+                                                                                                            }
+                                                                                                        ],
+                                                                                       "best_item":  {
+                                                                                                         "text":  "Teacher:",
+                                                                                                         "box":  [
+                                                                                                                     193,
+                                                                                                                     465,
+                                                                                                                     543,
+                                                                                                                     551
+                                                                                                                 ],
+                                                                                                         "confidence":  0.9844206561591787,
+                                                                                                         "raw_box":  [
+                                                                                                                         [
+                                                                                                                             193.0,
+                                                                                                                             465.0
+                                                                                                                         ],
+                                                                                                                         [
+                                                                                                                             543.0,
+                                                                                                                             465.0
+                                                                                                                         ],
+                                                                                                                         [
+                                                                                                                             543.0,
+                                                                                                                             551.0
+                                                                                                                         ],
+                                                                                                                         [
+                                                                                                                             193.0,
+                                                                                                                             551.0
+                                                                                                                         ]
+                                                                                                                     ],
+                                                                                                         "original_text":  "Teacher:",
+                                                                                                         "normalized_text":  "teacher",
+                                                                                                         "is_empty":  false,
+                                                                                                         "score":  {
+                                                                                                                       "text_quality_score":  0.65,
+                                                                                                                       "size_score":  1.0,
+                                                                                                                       "position_score":  0.9,
+                                                                                                                       "confidence_score":  0.9844,
+                                                                                                                       "noise_penalty":  0.0,
+                                                                                                                       "final_score":  0.8544
+                                                                                                                   }
+                                                                                                     }
+                                                                                   },
+                                                                   "caption_role":  "MAIN_CAPTION_TEXT",
+                                                                   "should_translate":  true
+                                                               }
+                                                           ],
+                                    "all_timelines":  [
+                                                          {
+                                                              "group_id":  1,
+                                                              "start":  0.0,
+                                                              "end":  26.1,
+                                                              "duration":  26.1,
+                                                              "sample_count":  105,
+                                                              "text":  "POV: bro when he hears 67",
+                                                              "normalized_text":  "pov bro when he hears 67",
+                                                              "box":  [
+                                                                          81,
+                                                                          233,
+                                                                          643,
+                                                                          361
+                                                                      ],
+                                                              "average_box":  [
+                                                                                  80,
+                                                                                  231,
+                                                                                  644,
+                                                                                  363
+                                                                              ],
+                                                              "confidence":  0.9969,
+                                                              "score":  {
+                                                                            "final_score":  0.9444,
+                                                                            "line_count":  2,
+                                                                            "source":  "caption_selector",
+                                                                            "header_only":  false,
+                                                                            "region_index":  1
+                                                                        },
+                                                              "best_sample":  {
+                                                                                  "sample_index":  16,
+                                                                                  "time":  4.0,
+                                                                                  "frame_index":  120,
+                                                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\9-fb-61583971002344-1626244598635059_9cb8a470\\frame_000016_4.00s.jpg",
+                                                                                  "region_index":  1,
+                                                                                  "text":  "POV: bro when he hears 67",
+                                                                                  "normalized_text":  "pov bro when he hears 67",
+                                                                                  "box":  [
+                                                                                              81,
+                                                                                              233,
+                                                                                              643,
+                                                                                              361
+                                                                                          ],
+                                                                                  "confidence":  0.9969,
+                                                                                  "score":  {
+                                                                                                "final_score":  0.9444,
+                                                                                                "line_count":  2,
+                                                                                                "source":  "caption_selector",
+                                                                                                "header_only":  false,
+                                                                                                "region_index":  1
+                                                                                            },
+                                                                                  "source_items":  [
+                                                                                                       {
+                                                                                                           "text":  "POV: bro when he",
+                                                                                                           "box":  [
+                                                                                                                       81,
+                                                                                                                       233,
+                                                                                                                       643,
+                                                                                                                       297
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9939222156726826,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               81.0,
+                                                                                                                               233.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               643.0,
+                                                                                                                               233.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               643.0,
+                                                                                                                               297.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               81.0,
+                                                                                                                               297.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "POV: bro when he",
+                                                                                                           "normalized_text":  "pov bro when he",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.9,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.9939,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.9438
+                                                                                                                     }
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "text":  "hears 67",
+                                                                                                           "box":  [
+                                                                                                                       227,
+                                                                                                                       299,
+                                                                                                                       493,
+                                                                                                                       361
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9998574606528798,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               227.0,
+                                                                                                                               299.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               493.0,
+                                                                                                                               299.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               493.0,
+                                                                                                                               361.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               227.0,
+                                                                                                                               361.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "hears 67",
+                                                                                                           "normalized_text":  "hears 67",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.9,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.9999,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.945
+                                                                                                                     }
+                                                                                                       }
+                                                                                                   ],
+                                                                                  "best_item":  {
+                                                                                                    "text":  "hears 67",
+                                                                                                    "box":  [
+                                                                                                                227,
+                                                                                                                299,
+                                                                                                                493,
+                                                                                                                361
+                                                                                                            ],
+                                                                                                    "confidence":  0.9998574606528798,
+                                                                                                    "raw_box":  [
+                                                                                                                    [
+                                                                                                                        227.0,
+                                                                                                                        299.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        493.0,
+                                                                                                                        299.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        493.0,
+                                                                                                                        361.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        227.0,
+                                                                                                                        361.0
+                                                                                                                    ]
+                                                                                                                ],
+                                                                                                    "original_text":  "hears 67",
+                                                                                                    "normalized_text":  "hears 67",
+                                                                                                    "is_empty":  false,
+                                                                                                    "score":  {
+                                                                                                                  "text_quality_score":  0.9,
+                                                                                                                  "size_score":  1.0,
+                                                                                                                  "position_score":  0.9,
+                                                                                                                  "confidence_score":  0.9999,
+                                                                                                                  "noise_penalty":  0.0,
+                                                                                                                  "final_score":  0.945
+                                                                                                              }
+                                                                                                }
+                                                                              },
+                                                              "caption_role":  "MAIN_CAPTION_TEXT",
+                                                              "should_translate":  true
+                                                          },
+                                                          {
+                                                              "group_id":  2,
+                                                              "start":  21.0,
+                                                              "end":  26.1,
+                                                              "duration":  5.100000000000001,
+                                                              "sample_count":  21,
+                                                              "text":  "Teacher:",
+                                                              "normalized_text":  "teacher",
+                                                              "box":  [
+                                                                          193,
+                                                                          465,
+                                                                          543,
+                                                                          551
+                                                                      ],
+                                                              "average_box":  [
+                                                                                  181,
+                                                                                  465,
+                                                                                  543,
+                                                                                  575
+                                                                              ],
+                                                              "confidence":  0.9844,
+                                                              "score":  {
+                                                                            "final_score":  0.8544,
+                                                                            "line_count":  1,
+                                                                            "source":  "caption_selector",
+                                                                            "header_only":  false,
+                                                                            "region_index":  2
+                                                                        },
+                                                              "best_sample":  {
+                                                                                  "sample_index":  104,
+                                                                                  "time":  26.0,
+                                                                                  "frame_index":  780,
+                                                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\9-fb-61583971002344-1626244598635059_9cb8a470\\frame_000104_26.00s.jpg",
+                                                                                  "region_index":  2,
+                                                                                  "text":  "Teacher:",
+                                                                                  "normalized_text":  "teacher",
+                                                                                  "box":  [
+                                                                                              193,
+                                                                                              465,
+                                                                                              543,
+                                                                                              551
+                                                                                          ],
+                                                                                  "confidence":  0.9844,
+                                                                                  "score":  {
+                                                                                                "final_score":  0.8544,
+                                                                                                "line_count":  1,
+                                                                                                "source":  "caption_selector",
+                                                                                                "header_only":  false,
+                                                                                                "region_index":  2
+                                                                                            },
+                                                                                  "source_items":  [
+                                                                                                       {
+                                                                                                           "text":  "Teacher:",
+                                                                                                           "box":  [
+                                                                                                                       193,
+                                                                                                                       465,
+                                                                                                                       543,
+                                                                                                                       551
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9844206561591787,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               193.0,
+                                                                                                                               465.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               543.0,
+                                                                                                                               465.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               543.0,
+                                                                                                                               551.0
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               193.0,
+                                                                                                                               551.0
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "Teacher:",
+                                                                                                           "normalized_text":  "teacher",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.65,
+                                                                                                                         "size_score":  1.0,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.9844,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.8544
+                                                                                                                     }
+                                                                                                       }
+                                                                                                   ],
+                                                                                  "best_item":  {
+                                                                                                    "text":  "Teacher:",
+                                                                                                    "box":  [
+                                                                                                                193,
+                                                                                                                465,
+                                                                                                                543,
+                                                                                                                551
+                                                                                                            ],
+                                                                                                    "confidence":  0.9844206561591787,
+                                                                                                    "raw_box":  [
+                                                                                                                    [
+                                                                                                                        193.0,
+                                                                                                                        465.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        543.0,
+                                                                                                                        465.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        543.0,
+                                                                                                                        551.0
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        193.0,
+                                                                                                                        551.0
+                                                                                                                    ]
+                                                                                                                ],
+                                                                                                    "original_text":  "Teacher:",
+                                                                                                    "normalized_text":  "teacher",
+                                                                                                    "is_empty":  false,
+                                                                                                    "score":  {
+                                                                                                                  "text_quality_score":  0.65,
+                                                                                                                  "size_score":  1.0,
+                                                                                                                  "position_score":  0.9,
+                                                                                                                  "confidence_score":  0.9844,
+                                                                                                                  "noise_penalty":  0.0,
+                                                                                                                  "final_score":  0.8544
+                                                                                                              }
+                                                                                                }
+                                                                              },
+                                                              "caption_role":  "MAIN_CAPTION_TEXT",
+                                                              "should_translate":  true
+                                                          },
+                                                          {
+                                                              "group_id":  3,
+                                                              "start":  3.75,
+                                                              "end":  6.75,
+                                                              "duration":  3.0,
+                                                              "sample_count":  12,
+                                                              "text":  "page on? What are",
+                                                              "normalized_text":  "page on what are",
+                                                              "box":  [
+                                                                          78,
+                                                                          593,
+                                                                          363,
+                                                                          784
+                                                                      ],
+                                                              "average_box":  [
+                                                                                  78,
+                                                                                  593,
+                                                                                  363,
+                                                                                  784
+                                                                              ],
+                                                              "confidence":  0.999,
+                                                              "score":  {
+                                                                            "final_score":  0.7129,
+                                                                            "line_count":  4,
+                                                                            "source":  "caption_selector",
+                                                                            "header_only":  false,
+                                                                            "region_index":  2
+                                                                        },
+                                                              "best_sample":  {
+                                                                                  "sample_index":  20,
+                                                                                  "time":  5.0,
+                                                                                  "frame_index":  150,
+                                                                                  "image_path":  "temp/analyze_frame_samples\\frame_samples\\9-fb-61583971002344-1626244598635059_9cb8a470\\frame_000020_5.00s.jpg",
+                                                                                  "region_index":  2,
+                                                                                  "text":  "page on? What are",
+                                                                                  "normalized_text":  "page on what are",
+                                                                                  "box":  [
+                                                                                              78,
+                                                                                              593,
+                                                                                              363,
+                                                                                              784
+                                                                                          ],
+                                                                                  "confidence":  0.999,
+                                                                                  "score":  {
+                                                                                                "final_score":  0.7129,
+                                                                                                "line_count":  4,
+                                                                                                "source":  "caption_selector",
+                                                                                                "header_only":  false,
+                                                                                                "region_index":  2
+                                                                                            },
+                                                                                  "source_items":  [
+                                                                                                       {
+                                                                                                           "text":  "page",
+                                                                                                           "box":  [
+                                                                                                                       201,
+                                                                                                                       593,
+                                                                                                                       341,
+                                                                                                                       695
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9999998807907104,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               201.08460847688576,
+                                                                                                                               644.55922593382
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               322.24264068711926,
+                                                                                                                               593.7573593128807
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               341.91539152311424,
+                                                                                                                               644.44077406618
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               220.7573593128807,
+                                                                                                                               695.2426406871193
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "page",
+                                                                                                           "normalized_text":  "page",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.65,
+                                                                                                                         "size_score":  0.8,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  1.0,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.8075
+                                                                                                                     }
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "text":  "on?",
+                                                                                                           "box":  [
+                                                                                                                       255,
+                                                                                                                       627,
+                                                                                                                       363,
+                                                                                                                       721
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9959749319269648,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               255.08460847688576,
+                                                                                                                               674.55922593382
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               339.22913372267027,
+                                                                                                                               627.9430547361956
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               363.91539152311424,
+                                                                                                                               674.44077406618
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               279.77086627732973,
+                                                                                                                               721.0569452638044
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "on?",
+                                                                                                           "normalized_text":  "on",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.1,
+                                                                                                                         "size_score":  0.8,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.996,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.6142
+                                                                                                                     }
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "text":  "What",
+                                                                                                           "box":  [
+                                                                                                                       78,
+                                                                                                                       641,
+                                                                                                                       222,
+                                                                                                                       743
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9998523592948914,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               78.75735931288071,
+                                                                                                                               692.7573593128807
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               203.33099976640855,
+                                                                                                                               641.8475981621032
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               222.2426406871193,
+                                                                                                                               691.2426406871193
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               97.66900023359146,
+                                                                                                                               743.1524018378968
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "What",
+                                                                                                           "normalized_text":  "what",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.65,
+                                                                                                                         "size_score":  0.8,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  0.9999,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.8075
+                                                                                                                     }
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "text":  "are",
+                                                                                                           "box":  [
+                                                                                                                       106,
+                                                                                                                       708,
+                                                                                                                       204,
+                                                                                                                       784
+                                                                                                                   ],
+                                                                                                           "confidence":  0.9999957328192642,
+                                                                                                           "raw_box":  [
+                                                                                                                           [
+                                                                                                                               106.21086857389425,
+                                                                                                                               743.5632605721682
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               187.18440723498145,
+                                                                                                                               708.1451912418645
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               204.78913142610577,
+                                                                                                                               749.4367394278318
+                                                                                                                           ],
+                                                                                                                           [
+                                                                                                                               123.81559276501854,
+                                                                                                                               784.8548087581355
+                                                                                                                           ]
+                                                                                                                       ],
+                                                                                                           "original_text":  "are",
+                                                                                                           "normalized_text":  "are",
+                                                                                                           "is_empty":  false,
+                                                                                                           "score":  {
+                                                                                                                         "text_quality_score":  0.3,
+                                                                                                                         "size_score":  0.55,
+                                                                                                                         "position_score":  0.9,
+                                                                                                                         "confidence_score":  1.0,
+                                                                                                                         "noise_penalty":  0.0,
+                                                                                                                         "final_score":  0.6225
+                                                                                                                     }
+                                                                                                       }
+                                                                                                   ],
+                                                                                  "best_item":  {
+                                                                                                    "text":  "page",
+                                                                                                    "box":  [
+                                                                                                                201,
+                                                                                                                593,
+                                                                                                                341,
+                                                                                                                695
+                                                                                                            ],
+                                                                                                    "confidence":  0.9999998807907104,
+                                                                                                    "raw_box":  [
+                                                                                                                    [
+                                                                                                                        201.08460847688576,
+                                                                                                                        644.55922593382
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        322.24264068711926,
+                                                                                                                        593.7573593128807
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        341.91539152311424,
+                                                                                                                        644.44077406618
+                                                                                                                    ],
+                                                                                                                    [
+                                                                                                                        220.7573593128807,
+                                                                                                                        695.2426406871193
+                                                                                                                    ]
+                                                                                                                ],
+                                                                                                    "original_text":  "page",
+                                                                                                    "normalized_text":  "page",
+                                                                                                    "is_empty":  false,
+                                                                                                    "score":  {
+                                                                                                                  "text_quality_score":  0.65,
+                                                                                                                  "size_score":  0.8,
+                                                                                                                  "position_score":  0.9,
+                                                                                                                  "confidence_score":  1.0,
+                                                                                                                  "noise_penalty":  0.0,
+                                                                                                                  "final_score":  0.8075
+                                                                                                              }
+                                                                                                }
+                                                                              },
+                                                              "caption_role":  "SUPPORTING_TEXT",
+                                                              "should_translate":  false
+                                                          }
+                                                      ]
+                                },
+    "selected_timelines":  [
+                               {
+                                   "group_id":  1,
+                                   "start":  0.0,
+                                   "end":  26.1,
+                                   "duration":  26.1,
+                                   "sample_count":  105,
+                                   "text":  "POV: bro when he hears 67",
+                                   "normalized_text":  "pov bro when he hears 67",
+                                   "box":  [
+                                               81,
+                                               233,
+                                               643,
+                                               361
+                                           ],
+                                   "average_box":  [
+                                                       80,
+                                                       231,
+                                                       644,
+                                                       363
+                                                   ],
+                                   "confidence":  0.9969,
+                                   "score":  {
+                                                 "final_score":  0.9444,
+                                                 "line_count":  2,
+                                                 "source":  "caption_selector",
+                                                 "header_only":  false,
+                                                 "region_index":  1
+                                             },
+                                   "best_sample":  {
+                                                       "sample_index":  16,
+                                                       "time":  4.0,
+                                                       "frame_index":  120,
+                                                       "image_path":  "temp/analyze_frame_samples\\frame_samples\\9-fb-61583971002344-1626244598635059_9cb8a470\\frame_000016_4.00s.jpg",
+                                                       "region_index":  1,
+                                                       "text":  "POV: bro when he hears 67",
+                                                       "normalized_text":  "pov bro when he hears 67",
+                                                       "box":  [
+                                                                   81,
+                                                                   233,
+                                                                   643,
+                                                                   361
+                                                               ],
+                                                       "confidence":  0.9969,
+                                                       "score":  {
+                                                                     "final_score":  0.9444,
+                                                                     "line_count":  2,
+                                                                     "source":  "caption_selector",
+                                                                     "header_only":  false,
+                                                                     "region_index":  1
+                                                                 },
+                                                       "source_items":  [
+                                                                            {
+                                                                                "text":  "POV: bro when he",
+                                                                                "box":  [
+                                                                                            81,
+                                                                                            233,
+                                                                                            643,
+                                                                                            297
+                                                                                        ],
+                                                                                "confidence":  0.9939222156726826,
+                                                                                "raw_box":  [
+                                                                                                [
+                                                                                                    81.0,
+                                                                                                    233.0
+                                                                                                ],
+                                                                                                [
+                                                                                                    643.0,
+                                                                                                    233.0
+                                                                                                ],
+                                                                                                [
+                                                                                                    643.0,
+                                                                                                    297.0
+                                                                                                ],
+                                                                                                [
+                                                                                                    81.0,
+                                                                                                    297.0
+                                                                                                ]
+                                                                                            ],
+                                                                                "original_text":  "POV: bro when he",
+                                                                                "normalized_text":  "pov bro when he",
+                                                                                "is_empty":  false,
+                                                                                "score":  {
+                                                                                              "text_quality_score":  0.9,
+                                                                                              "size_score":  1.0,
+                                                                                              "position_score":  0.9,
+                                                                                              "confidence_score":  0.9939,
+                                                                                              "noise_penalty":  0.0,
+                                                                                              "final_score":  0.9438
+                                                                                          }
+                                                                            },
+                                                                            {
+                                                                                "text":  "hears 67",
+                                                                                "box":  [
+                                                                                            227,
+                                                                                            299,
+                                                                                            493,
+                                                                                            361
+                                                                                        ],
+                                                                                "confidence":  0.9998574606528798,
+                                                                                "raw_box":  [
+                                                                                                [
+                                                                                                    227.0,
+                                                                                                    299.0
+                                                                                                ],
+                                                                                                [
+                                                                                                    493.0,
+                                                                                                    299.0
+                                                                                                ],
+                                                                                                [
+                                                                                                    493.0,
+                                                                                                    361.0
+                                                                                                ],
+                                                                                                [
+                                                                                                    227.0,
+                                                                                                    361.0
+                                                                                                ]
+                                                                                            ],
+                                                                                "original_text":  "hears 67",
+                                                                                "normalized_text":  "hears 67",
+                                                                                "is_empty":  false,
+                                                                                "score":  {
+                                                                                              "text_quality_score":  0.9,
+                                                                                              "size_score":  1.0,
+                                                                                              "position_score":  0.9,
+                                                                                              "confidence_score":  0.9999,
+                                                                                              "noise_penalty":  0.0,
+                                                                                              "final_score":  0.945
+                                                                                          }
+                                                                            }
+                                                                        ],
+                                                       "best_item":  {
+                                                                         "text":  "hears 67",
+                                                                         "box":  [
+                                                                                     227,
+                                                                                     299,
+                                                                                     493,
+                                                                                     361
+                                                                                 ],
+                                                                         "confidence":  0.9998574606528798,
+                                                                         "raw_box":  [
+                                                                                         [
+                                                                                             227.0,
+                                                                                             299.0
+                                                                                         ],
+                                                                                         [
+                                                                                             493.0,
+                                                                                             299.0
+                                                                                         ],
+                                                                                         [
+                                                                                             493.0,
+                                                                                             361.0
+                                                                                         ],
+                                                                                         [
+                                                                                             227.0,
+                                                                                             361.0
+                                                                                         ]
+                                                                                     ],
+                                                                         "original_text":  "hears 67",
+                                                                         "normalized_text":  "hears 67",
+                                                                         "is_empty":  false,
+                                                                         "score":  {
+                                                                                       "text_quality_score":  0.9,
+                                                                                       "size_score":  1.0,
+                                                                                       "position_score":  0.9,
+                                                                                       "confidence_score":  0.9999,
+                                                                                       "noise_penalty":  0.0,
+                                                                                       "final_score":  0.945
+                                                                                   }
+                                                                     }
+                                                   },
+                                   "caption_role":  "MAIN_CAPTION_TEXT",
+                                   "should_translate":  true
+                               },
+                               {
+                                   "group_id":  2,
+                                   "start":  21.0,
+                                   "end":  26.1,
+                                   "duration":  5.100000000000001,
+                                   "sample_count":  21,
+                                   "text":  "Teacher:",
+                                   "normalized_text":  "teacher",
+                                   "box":  [
+                                               193,
+                                               465,
+                                               543,
+                                               551
+                                           ],
+                                   "average_box":  [
+                                                       181,
+                                                       465,
+                                                       543,
+                                                       575
+                                                   ],
+                                   "confidence":  0.9844,
+                                   "score":  {
+                                                 "final_score":  0.8544,
+                                                 "line_count":  1,
+                                                 "source":  "caption_selector",
+                                                 "header_only":  false,
+                                                 "region_index":  2
+                                             },
+                                   "best_sample":  {
+                                                       "sample_index":  104,
+                                                       "time":  26.0,
+                                                       "frame_index":  780,
+                                                       "image_path":  "temp/analyze_frame_samples\\frame_samples\\9-fb-61583971002344-1626244598635059_9cb8a470\\frame_000104_26.00s.jpg",
+                                                       "region_index":  2,
+                                                       "text":  "Teacher:",
+                                                       "normalized_text":  "teacher",
+                                                       "box":  [
+                                                                   193,
+                                                                   465,
+                                                                   543,
+                                                                   551
+                                                               ],
+                                                       "confidence":  0.9844,
+                                                       "score":  {
+                                                                     "final_score":  0.8544,
+                                                                     "line_count":  1,
+                                                                     "source":  "caption_selector",
+                                                                     "header_only":  false,
+                                                                     "region_index":  2
+                                                                 },
+                                                       "source_items":  [
+                                                                            {
+                                                                                "text":  "Teacher:",
+                                                                                "box":  [
+                                                                                            193,
+                                                                                            465,
+                                                                                            543,
+                                                                                            551
+                                                                                        ],
+                                                                                "confidence":  0.9844206561591787,
+                                                                                "raw_box":  [
+                                                                                                [
+                                                                                                    193.0,
+                                                                                                    465.0
+                                                                                                ],
+                                                                                                [
+                                                                                                    543.0,
+                                                                                                    465.0
+                                                                                                ],
+                                                                                                [
+                                                                                                    543.0,
+                                                                                                    551.0
+                                                                                                ],
+                                                                                                [
+                                                                                                    193.0,
+                                                                                                    551.0
+                                                                                                ]
+                                                                                            ],
+                                                                                "original_text":  "Teacher:",
+                                                                                "normalized_text":  "teacher",
+                                                                                "is_empty":  false,
+                                                                                "score":  {
+                                                                                              "text_quality_score":  0.65,
+                                                                                              "size_score":  1.0,
+                                                                                              "position_score":  0.9,
+                                                                                              "confidence_score":  0.9844,
+                                                                                              "noise_penalty":  0.0,
+                                                                                              "final_score":  0.8544
+                                                                                          }
+                                                                            }
+                                                                        ],
+                                                       "best_item":  {
+                                                                         "text":  "Teacher:",
+                                                                         "box":  [
+                                                                                     193,
+                                                                                     465,
+                                                                                     543,
+                                                                                     551
+                                                                                 ],
+                                                                         "confidence":  0.9844206561591787,
+                                                                         "raw_box":  [
+                                                                                         [
+                                                                                             193.0,
+                                                                                             465.0
+                                                                                         ],
+                                                                                         [
+                                                                                             543.0,
+                                                                                             465.0
+                                                                                         ],
+                                                                                         [
+                                                                                             543.0,
+                                                                                             551.0
+                                                                                         ],
+                                                                                         [
+                                                                                             193.0,
+                                                                                             551.0
+                                                                                         ]
+                                                                                     ],
+                                                                         "original_text":  "Teacher:",
+                                                                         "normalized_text":  "teacher",
+                                                                         "is_empty":  false,
+                                                                         "score":  {
+                                                                                       "text_quality_score":  0.65,
+                                                                                       "size_score":  1.0,
+                                                                                       "position_score":  0.9,
+                                                                                       "confidence_score":  0.9844,
+                                                                                       "noise_penalty":  0.0,
+                                                                                       "final_score":  0.8544
+                                                                                   }
+                                                                     }
+                                                   },
+                                   "caption_role":  "MAIN_CAPTION_TEXT",
+                                   "should_translate":  true
+                               }
+                           ]
+}
