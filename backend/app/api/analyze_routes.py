@@ -46,6 +46,26 @@ def save_upload_video(video: UploadFile) -> str:
     return upload_path
 
 
+def save_upload_audio(audio: UploadFile) -> str:
+    ensure_dir(UPLOAD_DIR)
+
+    ext = os.path.splitext(audio.filename or "")[1].lower()
+
+    if ext not in [".mp3", ".m4a", ".aac", ".wav", ".ogg", ".mp4", ".mov", ".mkv", ".webm"]:
+        raise HTTPException(
+            status_code=400,
+            detail="File khong phai audio/video hop le",
+        )
+
+    safe_name = f"{uuid.uuid4().hex}{ext}"
+    upload_path = os.path.join(UPLOAD_DIR, safe_name)
+
+    with open(upload_path, "wb") as buffer:
+        shutil.copyfileobj(audio.file, buffer)
+
+    return upload_path
+
+
 @router.post("/upload")
 async def upload_video(video: UploadFile = File(...)):
     try:
@@ -57,6 +77,25 @@ async def upload_video(video: UploadFile = File(...)):
             "stage": "upload",
             "upload_path": upload_path,
             "video_info": video_info,
+        }
+
+    except HTTPException:
+        raise
+
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=str(error))
+
+
+@router.post("/upload-audio")
+async def upload_audio(audio: UploadFile = File(...)):
+    try:
+        upload_path = save_upload_audio(audio)
+
+        return {
+            "status": "ok",
+            "stage": "upload_audio",
+            "upload_path": upload_path,
+            "filename": audio.filename or "",
         }
 
     except HTTPException:

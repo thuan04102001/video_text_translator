@@ -5,6 +5,7 @@ import tempfile
 from typing import Dict, List, Optional
 
 from app.services.analyze_service import DEFAULT_TEMP_DIR, analyze_video_for_production
+from app.services.creative_frame_service import render_video_with_creative_frame
 from app.services.frame_template_service import render_video_with_frame_template
 from core.system.runtime_cleanup import cleanup_file, cleanup_sample_session_dir
 from core.translation.meme_translation_memory import (
@@ -1044,6 +1045,16 @@ def render_single_video(
     apply_frame: bool = False,
     frame_template_id: Optional[str] = None,
     frame_fit: Optional[str] = None,
+    apply_creative_frame: bool = False,
+    creative_frame_template_id: Optional[str] = None,
+    creative_frame_fit: Optional[str] = None,
+    creative_remove_source_audio: bool = True,
+    creative_randomize_variant: bool = True,
+    creative_seed: Optional[int] = None,
+    creative_smart_audio: bool = True,
+    creative_audio_profile: str = "auto",
+    creative_audio_volume: float = 1.0,
+    creative_custom_audio_path: Optional[str] = None,
     trim_start_seconds: Optional[float] = 0,
     trim_end_seconds: Optional[float] = 0,
     progress_callback=None,
@@ -1074,6 +1085,9 @@ def render_single_video(
     }
     downstream_progress = progress_callback
     frame_temp_path = None
+    legacy_apply_frame = bool(apply_frame)
+    apply_creative_frame = bool(apply_creative_frame or apply_frame)
+    frame_mode = "creative_frame"
 
     if trim_enabled:
         trim_info = _prepare_trimmed_input(
@@ -1097,9 +1111,9 @@ def render_single_video(
         )
 
     try:
-        if not translate and not apply_frame:
+        if not translate and not apply_frame and not apply_creative_frame:
             if not trim_enabled:
-                raise ValueError("Enable Translate Caption, Apply Frame, or Trim before rendering")
+                raise ValueError("Enable Translate Caption, Creative Frame, or Trim before rendering")
 
             copy_result = copy_video_file(
                 input_video_path=video_path,
@@ -1141,7 +1155,7 @@ def render_single_video(
                 "final_caption_selection": {},
             }
 
-        if not apply_frame:
+        if not apply_creative_frame:
             result = _render_subtitle_video(
                 video_path=video_path,
                 output_dir=output_dir,
@@ -1160,9 +1174,12 @@ def render_single_video(
             return result
 
         if not render_video:
-            raise ValueError("Apply Frame requires render_video=True")
+            raise ValueError("Frame render requires render_video=True")
 
-        if not frame_template_id:
+        active_template_id = creative_frame_template_id or frame_template_id
+        active_fit = creative_frame_fit or frame_fit
+
+        if not active_template_id:
             raise ValueError("Select a frame template before rendering")
 
         frame_input_path = video_path
@@ -1230,14 +1247,21 @@ def render_single_video(
             }
 
         cleanup_file(frame_temp_path)
-        frame_result = render_video_with_frame_template(
+        frame_result = render_video_with_creative_frame(
             input_video_path=frame_input_path,
             output_path=frame_temp_path,
-            template_id=frame_template_id,
-            fit_override=frame_fit,
+            template_id=active_template_id,
+            fit_override=active_fit,
+            remove_source_audio=creative_remove_source_audio,
+            randomize_variant=creative_randomize_variant,
+            seed=creative_seed,
+            smart_audio_enabled=creative_smart_audio,
+            smart_audio_profile=creative_audio_profile,
+            smart_audio_volume=creative_audio_volume,
+            custom_audio_path=creative_custom_audio_path,
             progress_callback=_scaled_progress_callback(
                 downstream_progress,
-                "apply_frame",
+                "creative_frame",
                 0.82 if translate else 0.0,
                 1.0,
             ),
@@ -1245,12 +1269,14 @@ def render_single_video(
         os.replace(frame_temp_path, output_path)
 
         result["status"] = "ok"
-        result["stage"] = "frame_complete"
-        result["message"] = "Frame template render complete."
+        result["stage"] = "creative_frame_complete"
+        result["message"] = "Creative Frame render complete."
         result["output_path"] = output_path
         result["frame"] = {
             **frame_result,
             "enabled": True,
+            "mode": frame_mode,
+            "legacy_apply_frame": legacy_apply_frame,
             "output_path": output_path,
         }
         result["render"] = {
@@ -1265,17 +1291,19 @@ def render_single_video(
         return result
 
     except Exception as error:
-        if apply_frame and "result" in locals() and result is not None:
+        if apply_creative_frame and "result" in locals() and result is not None:
             result["status"] = "error"
-            result["stage"] = "frame_template_render"
-            result["message"] = "Frame template render failed."
+            result["stage"] = "creative_frame_render"
+            result["message"] = "Creative Frame render failed."
             result["error"] = str(error)
             result["trim"] = trim_info
             result["frame"] = {
                 "enabled": True,
                 "status": "error",
-                "template_id": frame_template_id,
-                "fit": frame_fit,
+                "mode": frame_mode,
+                "legacy_apply_frame": legacy_apply_frame,
+                "template_id": creative_frame_template_id or frame_template_id,
+                "fit": creative_frame_fit or frame_fit,
                 "error": str(error),
             }
             result["render"] = {

@@ -4,9 +4,9 @@ import CrawlerPanel from "./pages/CrawlerPanel.jsx";
 import AutoReupDashboard from "./pages/AutoReupDashboard.jsx";
 
 const modules = [
+  { id: "autoReup", label: "Auto Reup" },
   { id: "translator", label: "Video Text Translator" },
   { id: "crawler", label: "Video Crawler" },
-  { id: "autoReup", label: "Auto Reup" },
 ];
 
 const moduleTitles = {
@@ -16,7 +16,7 @@ const moduleTitles = {
 };
 
 export default function App() {
-  const [activeModule, setActiveModule] = useState("translator");
+  const [activeModule, setActiveModule] = useState("autoReup");
 
   return (
     <div className="tool-root">

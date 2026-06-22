@@ -51,3 +51,28 @@ backend\venv\Scripts\python -m playwright install chromium
 6. Ghi chu
 - Khi start backend, tool se tu clear uploads/temp runtime de tranh file cu gay treo.
 - Muon tat tool thi dong 2 cua so Backend va Frontend.
+
+7. Meta Auto Reup (tuy chon)
+- Neu muon tool tu doi User token ngan han sang long-lived token:
+  1. Copy file .env.example thanh .env.
+  2. Dien META_APP_ID va META_APP_SECRET cua Meta App.
+  3. Khoi dong lai tool.
+- Khong chia se hoac commit file .env.
+- Neu khong khai bao App ID/Secret, tool van luu, kiem tra va dong bo
+  token da nhap, nhung khong the tu doi short-lived thanh long-lived.
+
+8. Meta credential production 24/24
+- Uu tien tao System User trong Meta Business Settings.
+- Gan dung Page/Business asset va quyen can thiet cho System User.
+- Tao System User access token tu dung Meta App.
+- Trong Auto Reup > Meta Credential Manager:
+  1. Chon "System User - production 24/24".
+  2. Nhap ten nhom tai san.
+  3. Nhap access token.
+  4. Nhap dung Business ID (co the nhap nhieu ID, cach nhau dau phay).
+  5. Bam them va dong bo.
+- User OAuth long-lived chi dung cho Page ca nhan/direct asset khong gan duoc
+  vao System User.
+- Explorer/Test token chi dung test, khong dung chay production.
+- Nhieu credential la nhieu nhom tai san doc lap. He thong khong tu dong lay
+  credential tai khoan khac de thay the khi mot credential het han.

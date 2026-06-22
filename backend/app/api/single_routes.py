@@ -31,6 +31,16 @@ class RenderRequest(BaseModel):
     apply_frame: bool = False
     frame_template_id: Optional[str] = None
     frame_fit: Optional[str] = None
+    apply_creative_frame: bool = False
+    creative_frame_template_id: Optional[str] = None
+    creative_frame_fit: Optional[str] = None
+    creative_remove_source_audio: bool = True
+    creative_randomize_variant: bool = True
+    creative_seed: Optional[int] = None
+    creative_smart_audio: bool = True
+    creative_audio_profile: str = "auto"
+    creative_audio_volume: float = 1.0
+    creative_custom_audio_path: Optional[str] = None
     trim_start_seconds: float = 0
     trim_end_seconds: float = 0
 
@@ -60,6 +70,16 @@ def render_single_video_route(request: RenderRequest):
         apply_frame=request.apply_frame,
         frame_template_id=request.frame_template_id,
         frame_fit=request.frame_fit,
+        apply_creative_frame=request.apply_creative_frame,
+        creative_frame_template_id=request.creative_frame_template_id,
+        creative_frame_fit=request.creative_frame_fit,
+        creative_remove_source_audio=request.creative_remove_source_audio,
+        creative_randomize_variant=request.creative_randomize_variant,
+        creative_seed=request.creative_seed,
+        creative_smart_audio=request.creative_smart_audio,
+        creative_audio_profile=request.creative_audio_profile,
+        creative_audio_volume=request.creative_audio_volume,
+        creative_custom_audio_path=request.creative_custom_audio_path,
         trim_start_seconds=request.trim_start_seconds,
         trim_end_seconds=request.trim_end_seconds,
     )

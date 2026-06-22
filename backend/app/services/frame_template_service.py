@@ -6,6 +6,7 @@ import re
 import shutil
 import subprocess
 import tempfile
+import time
 import uuid
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -19,7 +20,7 @@ from core.video.video_writer import get_video_capture_info
 BACKEND_ROOT = Path(__file__).resolve().parents[2]
 FRAME_TEMPLATES_DIR = BACKEND_ROOT / "frame_templates"
 ALLOWED_FITS = {"cover", "contain", "stretch"}
-ALLOWED_BACKGROUND_EXTENSIONS = {".png", ".jpg", ".jpeg", ".mp4", ".mov", ".webm"}
+ALLOWED_BACKGROUND_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".mp4", ".mov", ".webm"}
 ALLOWED_FOREGROUND_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webm", ".mov", ".mp4"}
 ALLOWED_THUMBNAIL_EXTENSIONS = {".png", ".jpg", ".jpeg"}
 ALLOWED_VOICE_INTRO_EXTENSIONS = {".mp3"}
@@ -73,6 +74,24 @@ def _safe_asset_path(template_dir: Path, asset_name: Optional[str]) -> Optional[
     return asset_path
 
 
+def _unlink_asset_if_possible(path: Optional[Path], retries: int = 5) -> bool:
+    if not path or not path.is_file():
+        return True
+
+    for attempt in range(max(1, retries)):
+        try:
+            path.unlink()
+            return True
+        except FileNotFoundError:
+            return True
+        except OSError:
+            if attempt >= retries - 1:
+                return False
+            time.sleep(0.12 * (attempt + 1))
+
+    return False
+
+
 def _positive_int(value, label: str) -> int:
     number = int(value or 0)
 
@@ -101,14 +120,64 @@ def _validate_asset_extension(filename: str, allowed_extensions, label: str) -> 
     return extension
 
 
+def _ffprobe_asset_dimensions(path: Path) -> tuple[int, int]:
+    ffmpeg_executable = get_ffmpeg_executable()
+
+    if not ffmpeg_executable:
+        return 0, 0
+
+    ffmpeg_path = Path(ffmpeg_executable)
+    ffprobe = ffmpeg_path.with_name("ffprobe.exe" if os.name == "nt" else "ffprobe")
+    ffprobe_executable = str(ffprobe) if ffprobe.is_file() else "ffprobe"
+    process = subprocess.run(
+        [
+            ffprobe_executable,
+            "-v",
+            "error",
+            "-select_streams",
+            "v:0",
+            "-show_entries",
+            "stream=width,height",
+            "-of",
+            "csv=s=x:p=0",
+            str(path),
+        ],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        check=False,
+    )
+
+    if process.returncode != 0:
+        return 0, 0
+
+    match = re.search(r"(\d+)x(\d+)", process.stdout.strip())
+
+    if not match:
+        return 0, 0
+
+    return int(match.group(1)), int(match.group(2))
+
+
 def _asset_dimensions(path: Path) -> tuple[int, int]:
     if path.suffix.lower() == ".gif":
         with Image.open(path) as image:
             return image.size
 
     if _is_video_asset(str(path)):
-        info = get_video_capture_info(str(path))
-        return int(info.get("width") or 0), int(info.get("height") or 0)
+        try:
+            info = get_video_capture_info(str(path))
+            width = int(info.get("width") or 0)
+            height = int(info.get("height") or 0)
+
+            if width > 0 and height > 0:
+                return width, height
+        except Exception:
+            pass
+
+        return _ffprobe_asset_dimensions(path)
 
     with Image.open(path) as image:
         return image.size
@@ -166,7 +235,7 @@ def _generate_thumbnail(background_path: Path, thumbnail_path: Path) -> None:
             thumbnail.save(thumbnail_path, "JPEG", quality=88, optimize=True)
     finally:
         if extracted_path and extracted_path.exists():
-            extracted_path.unlink()
+            _unlink_asset_if_possible(extracted_path)
 
 
 def _normalize_video_transform(zoom, offset_x, offset_y) -> Dict:
@@ -184,7 +253,7 @@ def _normalize_video_transform(zoom, offset_x, offset_y) -> Dict:
     }
 
 
-def _normalize_foreground_transform(scale, offset_x, offset_y, rotation) -> Dict:
+def _normalize_foreground_transform(scale, offset_x, offset_y, rotation, opacity=1.0, speed=1.0) -> Dict:
     try:
         normalized_scale = float(scale)
     except (TypeError, ValueError):
@@ -194,16 +263,39 @@ def _normalize_foreground_transform(scale, offset_x, offset_y, rotation) -> Dict
         normalized_rotation = float(rotation)
     except (TypeError, ValueError):
         normalized_rotation = 0.0
+    try:
+        normalized_opacity = float(opacity)
+    except (TypeError, ValueError):
+        normalized_opacity = 1.0
+    try:
+        normalized_speed = float(speed)
+    except (TypeError, ValueError):
+        normalized_speed = 1.0
 
     normalized_scale = max(0.05, min(6.0, normalized_scale))
     normalized_rotation = max(-180.0, min(180.0, normalized_rotation))
+    normalized_opacity = max(0.0, min(1.0, normalized_opacity))
+    normalized_speed = max(0.25, min(4.0, normalized_speed))
 
     return {
         "scale": round(normalized_scale, 3),
         "offset_x": int(offset_x or 0),
         "offset_y": int(offset_y or 0),
         "rotation": round(normalized_rotation, 2),
+        "opacity": round(normalized_opacity, 3),
+        "speed": round(normalized_speed, 3),
     }
+
+
+def _normalize_foreground_transform_config(transform: Dict) -> Dict:
+    return _normalize_foreground_transform(
+        transform.get("scale", 1.0),
+        transform.get("offset_x", transform.get("offsetX", 0)),
+        transform.get("offset_y", transform.get("offsetY", 0)),
+        transform.get("rotation", 0.0),
+        transform.get("opacity", 1.0),
+        transform.get("speed", 1.0),
+    )
 
 
 def _parse_foregrounds_config(value) -> List[Dict]:
@@ -276,7 +368,7 @@ def _save_template_media_file(
     if existing_asset and existing_asset != asset_name:
         existing_path = _safe_asset_path(template_dir, existing_asset)
         if existing_path and existing_path.is_file():
-            existing_path.unlink()
+            _unlink_asset_if_possible(existing_path)
 
     return asset_name
 
@@ -309,7 +401,7 @@ def _save_background_sound_files(
 
         old_path = _safe_asset_path(template_dir, old_asset)
         if old_path and old_path.is_file():
-            old_path.unlink()
+            _unlink_asset_if_possible(old_path)
 
     return next_assets
 
@@ -325,12 +417,7 @@ def _foreground_item_from_config(item: Dict, legacy_index: int = 0) -> Dict:
         "id": str(item.get("id") or f"fg_{legacy_index}_{uuid.uuid4().hex[:8]}"),
         "asset": str(item.get("asset") or ""),
         "order": order,
-        "transform": _normalize_foreground_transform(
-            transform.get("scale", 1.0),
-            transform.get("offset_x", 0),
-            transform.get("offset_y", 0),
-            transform.get("rotation", 0.0),
-        ),
+        "transform": _normalize_foreground_transform_config(transform),
     }
 
 
@@ -353,12 +440,7 @@ def _foreground_items_from_config(config: Dict) -> List[Dict]:
                 "id": "foreground_0",
                 "asset": str(legacy_asset),
                 "order": 0,
-                "transform": _normalize_foreground_transform(
-                    legacy_transform.get("scale", 1.0),
-                    legacy_transform.get("offset_x", 0),
-                    legacy_transform.get("offset_y", 0),
-                    legacy_transform.get("rotation", 0.0),
-                ),
+                "transform": _normalize_foreground_transform_config(legacy_transform),
             }
         ]
 
@@ -380,12 +462,7 @@ def _save_foreground_files(
     if config_items:
         for index, item in enumerate(config_items):
             transform = dict(item.get("transform") or {})
-            normalized_transform = _normalize_foreground_transform(
-                transform.get("scale", 1.0),
-                transform.get("offset_x", 0),
-                transform.get("offset_y", 0),
-                transform.get("rotation", 0.0),
-            )
+            normalized_transform = _normalize_foreground_transform_config(transform)
             upload_index = item.get("upload_index")
             foreground_id = str(item.get("id") or f"fg_{uuid.uuid4().hex[:8]}")
             try:
@@ -445,7 +522,7 @@ def _save_foreground_files(
 
         old_path = _safe_asset_path(template_dir, asset_name)
         if old_path and old_path.is_file():
-            old_path.unlink()
+            _unlink_asset_if_possible(old_path)
 
     ordered_items = sorted(next_items, key=lambda item: item.get("order", 0))
     for index, item in enumerate(ordered_items):
@@ -534,7 +611,7 @@ def create_frame_template(
         background_name = f"background{background_extension}"
         background_path = temp_dir / background_name
         background_path.write_bytes(background_bytes)
-        _validate_portrait_asset(background_path, "Background")
+        _validate_readable_asset(background_path, "Background")
         normalized_foreground_files = list(foreground_files or [])
 
         if foreground_filename and foreground_bytes:
@@ -573,7 +650,7 @@ def create_frame_template(
             with Image.open(uploaded_thumbnail) as image:
                 thumbnail = ImageOps.fit(image.convert("RGB"), (270, 480), Image.Resampling.LANCZOS)
                 thumbnail.save(thumbnail_path, "JPEG", quality=88, optimize=True)
-            uploaded_thumbnail.unlink()
+            _unlink_asset_if_possible(uploaded_thumbnail)
         else:
             _generate_thumbnail(background_path, thumbnail_path)
 
@@ -713,13 +790,13 @@ def update_frame_template(
         background_name = f"background{background_extension}"
         background_path = template_dir / background_name
         background_path.write_bytes(background_bytes)
-        _validate_portrait_asset(background_path, "Background")
+        _validate_readable_asset(background_path, "Background")
 
         old_background = config.get("background")
         if old_background and old_background != background_name:
             old_background_path = _safe_asset_path(template_dir, old_background)
             if old_background_path and old_background_path.is_file():
-                old_background_path.unlink()
+                _unlink_asset_if_possible(old_background_path)
 
         config["background"] = background_name
         background_changed = True
@@ -774,7 +851,7 @@ def update_frame_template(
                 thumbnail.save(thumbnail_path, "JPEG", quality=88, optimize=True)
         finally:
             if uploaded_thumbnail.exists():
-                uploaded_thumbnail.unlink()
+                _unlink_asset_if_possible(uploaded_thumbnail)
 
         config["thumbnail"] = "thumbnail.jpg"
     elif background_changed:
@@ -1528,15 +1605,31 @@ def render_video_with_frame_template(
         foreground_rotation = math.radians(foreground_transform["rotation"])
         foreground_offset_x = foreground_transform["offset_x"]
         foreground_offset_y = foreground_transform["offset_y"]
+        foreground_opacity = foreground_transform.get("opacity", 1.0)
+        foreground_speed = foreground_transform.get("speed", 1.0)
         foreground_label = f"frame_fg_{foreground_index}"
         next_output_label = f"framed_{foreground_index}"
+        foreground_filters = []
+
+        if _is_video_asset(foreground["path"]) and abs(float(foreground_speed or 1.0) - 1.0) > 0.001:
+            foreground_filters.append(f"setpts=PTS/{float(foreground_speed):.6f}")
+
+        foreground_filters.extend(
+            [
+                "format=rgba",
+                f"scale=trunc(iw*{foreground_scale}/2)*2:trunc(ih*{foreground_scale}/2)*2",
+                (
+                    f"rotate={foreground_rotation:.8f}:c=none:"
+                    f"ow=rotw({foreground_rotation:.8f}):oh=roth({foreground_rotation:.8f})"
+                ),
+            ]
+        )
+
+        if float(foreground_opacity) < 0.999:
+            foreground_filters.append(f"colorchannelmixer=aa={float(foreground_opacity):.6f}")
 
         filter_parts.append(
-            f"[{input_index}:v]format=rgba,"
-            f"scale=trunc(iw*{foreground_scale}/2)*2:trunc(ih*{foreground_scale}/2)*2,"
-            f"rotate={foreground_rotation:.8f}:c=none:"
-            f"ow=rotw({foreground_rotation:.8f}):oh=roth({foreground_rotation:.8f})"
-            f"[{foreground_label}]"
+            f"[{input_index}:v]{','.join(foreground_filters)}[{foreground_label}]"
         )
         filter_parts.append(
             f"[{output_label}][{foreground_label}]"

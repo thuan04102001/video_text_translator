@@ -102,6 +102,17 @@ async function uploadVideo({ video }) {
   };
 }
 
+async function uploadCreativeAudio({ audio }) {
+  const formData = new FormData();
+  formData.append("audio", audio);
+
+  const res = await axios.post(`${API}/analyze/upload-audio`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+
+  return res.data;
+}
+
 async function loadFrameTemplates() {
   const res = await axios.get(`${API}/frame-templates`);
   return (res.data.templates || []).map((template) => ({
@@ -118,6 +129,8 @@ function normalizeForegroundTransform(transform = {}) {
     offsetX: transform.offset_x ?? transform.offsetX ?? 0,
     offsetY: transform.offset_y ?? transform.offsetY ?? 0,
     rotation: transform.rotation ?? 0,
+    opacity: transform.opacity ?? 1,
+    speed: transform.speed ?? 1,
   };
 }
 
@@ -190,6 +203,8 @@ function appendForegroundLayersToFormData(formData, foregroundLayers = []) {
         offset_x: layer.transform?.offsetX ?? 0,
         offset_y: layer.transform?.offsetY ?? 0,
         rotation: layer.transform?.rotation ?? 0,
+        opacity: layer.transform?.opacity ?? 1,
+        speed: layer.transform?.speed ?? 1,
       },
     };
 
@@ -290,9 +305,15 @@ async function processVideo({
   outputDir,
   translationMode,
   translateCaption,
-  applyFrame,
+  applyCreativeFrame,
   frameTemplateId,
   frameFit,
+  creativeRemoveSourceAudio,
+  creativeRandomizeVariant,
+  creativeSeed,
+  creativeSmartAudio,
+  creativeAudioVolume,
+  creativeCustomAudioPath,
   trimStartSeconds,
   trimEndSeconds,
 }) {
@@ -306,9 +327,18 @@ async function processVideo({
     translate: translateCaption,
     render_video: true,
     cleanup_temp: true,
-    apply_frame: applyFrame,
-    frame_template_id: applyFrame ? frameTemplateId : null,
-    frame_fit: applyFrame ? frameFit : null,
+    apply_frame: false,
+    frame_template_id: null,
+    frame_fit: null,
+    apply_creative_frame: applyCreativeFrame,
+    creative_frame_template_id: applyCreativeFrame ? frameTemplateId : null,
+    creative_frame_fit: applyCreativeFrame ? frameFit : null,
+    creative_remove_source_audio: creativeRemoveSourceAudio,
+    creative_randomize_variant: creativeRandomizeVariant,
+    creative_seed: creativeSeed === "" ? null : Number(creativeSeed),
+    creative_smart_audio: creativeSmartAudio,
+    creative_audio_volume: Number(creativeAudioVolume) || 1.0,
+    creative_custom_audio_path: creativeCustomAudioPath || null,
     trim_start_seconds: trimStartSeconds || 0,
     trim_end_seconds: trimEndSeconds || 0,
   });
@@ -364,7 +394,14 @@ export default function Home() {
 
   const [translationMode, setTranslationMode] = useState("argos");
   const [translateCaption, setTranslateCaption] = useState(true);
-  const [applyFrame, setApplyFrame] = useState(false);
+  const [applyCreativeFrame, setApplyCreativeFrame] = useState(false);
+  const [creativeRemoveSourceAudio, setCreativeRemoveSourceAudio] = useState(true);
+  const [creativeRandomizeVariant, setCreativeRandomizeVariant] = useState(true);
+  const [creativeSeed, setCreativeSeed] = useState("");
+  const [creativeSmartAudio, setCreativeSmartAudio] = useState(true);
+  const [creativeAudioVolume, setCreativeAudioVolume] = useState(1.0);
+  const [creativeAudioFile, setCreativeAudioFile] = useState(null);
+  const [creativeAudioUpload, setCreativeAudioUpload] = useState(null);
   const [trimStartEnabled, setTrimStartEnabled] = useState(false);
   const [trimEndEnabled, setTrimEndEnabled] = useState(false);
   const [trimStartSeconds, setTrimStartSeconds] = useState("");
@@ -491,8 +528,8 @@ export default function Home() {
   };
 
   const validateTranslationKey = () => {
-    if (!translateCaption && !applyFrame && !hasTrimSettings()) {
-      alert("Hay bat Translate Caption, Apply Frame, hoac Trim video.");
+    if (!translateCaption && !applyCreativeFrame && !hasTrimSettings()) {
+      alert("Hay bat Translate Caption, Creative Frame, hoac Trim video.");
       return false;
     }
 
@@ -516,12 +553,37 @@ export default function Home() {
       return false;
     }
 
-    if (applyFrame && !frameTemplateId) {
+    if (applyCreativeFrame && !frameTemplateId) {
       alert("Hay chon frame template.");
       return false;
     }
 
     return true;
+  };
+
+  const ensureCreativeAudioUpload = async () => {
+    if (!applyCreativeFrame || !creativeSmartAudio || !creativeAudioFile) {
+      return creativeAudioUpload;
+    }
+
+    if (
+      creativeAudioUpload?.path
+      && creativeAudioUpload?.name === creativeAudioFile.name
+      && creativeAudioUpload?.size === creativeAudioFile.size
+      && creativeAudioUpload?.lastModified === creativeAudioFile.lastModified
+    ) {
+      return creativeAudioUpload;
+    }
+
+    const uploaded = await uploadCreativeAudio({ audio: creativeAudioFile });
+    const nextUpload = {
+      path: uploaded.upload_path,
+      name: creativeAudioFile.name,
+      size: creativeAudioFile.size,
+      lastModified: creativeAudioFile.lastModified,
+    };
+    setCreativeAudioUpload(nextUpload);
+    return nextUpload;
   };
 
   const handleBrowseInput = async () => {
@@ -595,6 +657,7 @@ export default function Home() {
 
       setSingleStatus("Dang render production...");
       const trim = getTrimSettings();
+      const creativeAudio = await ensureCreativeAudioUpload();
 
       const data = await processVideo({
         video,
@@ -604,9 +667,15 @@ export default function Home() {
         outputDir,
         translationMode,
         translateCaption,
-        applyFrame,
+        applyCreativeFrame,
         frameTemplateId,
         frameFit,
+        creativeRemoveSourceAudio,
+        creativeRandomizeVariant,
+        creativeSeed,
+        creativeSmartAudio,
+        creativeAudioVolume,
+        creativeCustomAudioPath: creativeAudio?.path || "",
         trimStartSeconds: trim.trimStartSeconds,
         trimEndSeconds: trim.trimEndSeconds,
         openaiApiKey,
@@ -663,6 +732,7 @@ export default function Home() {
 
     const safeThreads = Math.max(1, Math.min(10, Number(threads) || 1));
     const trim = getTrimSettings();
+    const creativeAudio = await ensureCreativeAudioUpload();
 
     setBatchRunning(true);
     setBatchStatus({
@@ -686,9 +756,18 @@ export default function Home() {
         threads: safeThreads,
         translation_mode: translationMode,
         translate: translateCaption,
-        apply_frame: applyFrame,
-        frame_template_id: applyFrame ? frameTemplateId : null,
-        frame_fit: applyFrame ? frameFit : null,
+        apply_frame: false,
+        frame_template_id: null,
+        frame_fit: null,
+        apply_creative_frame: applyCreativeFrame,
+        creative_frame_template_id: applyCreativeFrame ? frameTemplateId : null,
+        creative_frame_fit: applyCreativeFrame ? frameFit : null,
+        creative_remove_source_audio: creativeRemoveSourceAudio,
+        creative_randomize_variant: creativeRandomizeVariant,
+        creative_seed: creativeSeed === "" ? null : Number(creativeSeed),
+        creative_smart_audio: creativeSmartAudio,
+        creative_audio_volume: Number(creativeAudioVolume) || 1.0,
+        creative_custom_audio_path: creativeAudio?.path || null,
         trim_start_seconds: trim.trimStartSeconds,
         trim_end_seconds: trim.trimEndSeconds,
       });
@@ -836,91 +915,11 @@ export default function Home() {
   const TranslationSettings = (
     <div className="bg-zinc-950/60 border border-zinc-800 rounded-2xl p-4 space-y-4">
       <div>
-        <label className="text-sm text-zinc-400">AI Translate Engine</label>
-
-        <select
-          value={translationMode}
-          onChange={(e) => setTranslationMode(e.target.value)}
-          className="w-full mt-2 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white outline-none"
-        >
-          <option value="argos">Argos Offline</option>
-          <option value="gemini">Gemini API</option>
-          <option value="openrouter">OpenRouter API</option>
-          <option value="gpt">OpenAI API</option>
-        </select>
+        <label className="text-sm text-zinc-400">Translate Engine</label>
+        <div className="mt-2 rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-3 text-white">
+          Argos Offline
+        </div>
       </div>
-
-      {translationMode === "gemini" && (
-        <div className="space-y-3">
-          <div>
-            <label className="text-sm text-zinc-400">Gemini API Key</label>
-            <input
-              type="password"
-              value={geminiApiKey}
-              onChange={(e) => setGeminiApiKey(e.target.value)}
-              placeholder="AIza..."
-              className="w-full mt-2 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white outline-none"
-            />
-          </div>
-
-          <div>
-            <label className="text-sm text-zinc-400">Gemini Model</label>
-            <input
-              value={geminiModel}
-              onChange={(e) => setGeminiModel(e.target.value)}
-              className="w-full mt-2 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white outline-none"
-            />
-          </div>
-        </div>
-      )}
-
-      {translationMode === "openrouter" && (
-        <div className="space-y-3">
-          <div>
-            <label className="text-sm text-zinc-400">OpenRouter API Key</label>
-            <input
-              type="password"
-              value={openrouterApiKey}
-              onChange={(e) => setOpenrouterApiKey(e.target.value)}
-              placeholder="sk-or-v1-..."
-              className="w-full mt-2 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white outline-none"
-            />
-          </div>
-
-          <div>
-            <label className="text-sm text-zinc-400">OpenRouter Model</label>
-            <input
-              value={openrouterModel}
-              onChange={(e) => setOpenrouterModel(e.target.value)}
-              className="w-full mt-2 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white outline-none"
-            />
-          </div>
-        </div>
-      )}
-
-      {translationMode === "gpt" && (
-        <div className="space-y-3">
-          <div>
-            <label className="text-sm text-zinc-400">OpenAI API Key</label>
-            <input
-              type="password"
-              value={openaiApiKey}
-              onChange={(e) => setOpenaiApiKey(e.target.value)}
-              placeholder="sk-..."
-              className="w-full mt-2 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white outline-none"
-            />
-          </div>
-
-          <div>
-            <label className="text-sm text-zinc-400">OpenAI Model</label>
-            <input
-              value={openaiModel}
-              onChange={(e) => setOpenaiModel(e.target.value)}
-              className="w-full mt-2 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white outline-none"
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 
@@ -941,13 +940,13 @@ export default function Home() {
         </button>
         <button
           type="button"
-          className={`processing-option ${applyFrame ? "active" : ""}`}
-          onClick={() => setApplyFrame((current) => !current)}
+          className={`processing-option ${applyCreativeFrame ? "active" : ""}`}
+          onClick={() => setApplyCreativeFrame((current) => !current)}
         >
           <span className="processing-option-indicator" />
           <span>
-            <strong>Apply Frame</strong>
-            <small>Ghep video vao template</small>
+            <strong>Creative Frame</strong>
+            <small>Ghep frame, repack va audio tuy chon</small>
           </span>
         </button>
         <div
@@ -1018,12 +1017,16 @@ export default function Home() {
     </div>
   );
 
-  const FrameSettings = applyFrame ? (
+  const FrameSettings = applyCreativeFrame ? (
     <div className="frame-settings">
       <div className="frame-settings-head">
         <div>
-          <div className="frame-settings-title">Video Frame Template</div>
-          <div className="frame-settings-copy">Chon bo cuc dau ra cho video.</div>
+          <div className="frame-settings-title">
+            Creative Frame
+          </div>
+          <div className="frame-settings-copy">
+            Dung template hien co, them buoc chuan hoa video va audio tuy chon.
+          </div>
         </div>
         <span className="frame-settings-badge">{frameTemplates.length} mau</span>
       </div>
@@ -1125,6 +1128,92 @@ export default function Home() {
           ))}
         </div>
       </div>
+      {applyCreativeFrame ? (
+        <div className="creative-frame-panel">
+          <div className="creative-frame-panel-head">
+            <div>
+              <strong>Creative options</strong>
+              <span>Repack video va xu ly audio truoc khi render.</span>
+            </div>
+          </div>
+          <div className="creative-frame-option-grid">
+            <label className="creative-frame-check">
+              <input
+                type="checkbox"
+                checked={creativeRemoveSourceAudio}
+                onChange={(event) => setCreativeRemoveSourceAudio(event.target.checked)}
+              />
+              <span>
+                <strong>Remove source audio</strong>
+                <small>Bo audio goc, giu audio template/custom neu co.</small>
+              </span>
+            </label>
+            <label className="creative-frame-check">
+              <input
+                type="checkbox"
+                checked={creativeRandomizeVariant}
+                onChange={(event) => setCreativeRandomizeVariant(event.target.checked)}
+              />
+              <span>
+                <strong>Visual repack variant</strong>
+                <small>Them bien the hinh anh nhe truoc khi ghep frame.</small>
+              </span>
+            </label>
+          </div>
+          <label className="creative-frame-field">
+            <span>Seed optional</span>
+            <input
+              type="number"
+              value={creativeSeed}
+              onChange={(event) => setCreativeSeed(event.target.value)}
+              placeholder="De trong de tu dong"
+            />
+          </label>
+          <label className="creative-frame-check creative-frame-audio-toggle">
+            <input
+              type="checkbox"
+              checked={creativeSmartAudio}
+              onChange={(event) => setCreativeSmartAudio(event.target.checked)}
+            />
+            <span>
+              <strong>Custom audio layer</strong>
+              <small>Chon MP3/MP4 lam audio nen cho video.</small>
+            </span>
+          </label>
+          {creativeSmartAudio ? (
+            <div className="creative-frame-audio-grid">
+              <label className="creative-frame-field creative-frame-file">
+                <span>Custom audio MP3 / MP4</span>
+                <input
+                  type="file"
+                  accept=".mp3,.m4a,.aac,.wav,.ogg,.mp4,.mov,.mkv,.webm,audio/*,video/mp4"
+                  onChange={(event) => {
+                    const file = event.target.files?.[0] || null;
+                    setCreativeAudioFile(file);
+                    setCreativeAudioUpload(null);
+                  }}
+                />
+                <small>
+                  {creativeAudioFile
+                    ? `Dang chon: ${creativeAudioFile.name}`
+                    : "Neu chon file, he thong se dung audio nay thay vi profile tu sinh."}
+                </small>
+              </label>
+              <label className="creative-frame-field creative-frame-volume">
+                <span>Volume</span>
+                <input
+                  type="number"
+                  min="0.02"
+                  max="2"
+                  step="0.05"
+                  value={creativeAudioVolume}
+                  onChange={(event) => setCreativeAudioVolume(event.target.value)}
+                />
+              </label>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
       {templateManagerOpen ? (
         <TemplateManager
           template={editingFrameTemplate}
@@ -1458,6 +1547,11 @@ function TemplateManager({ template, onClose, onSaved }) {
     width: template?.video_slot?.width ?? 680,
     height: template?.video_slot?.height ?? 1220,
   });
+  const [slotResetPercent, setSlotResetPercent] = useState(() => {
+    const widthPercent = ((template?.video_slot?.width ?? 756) / 1080) * 100;
+    const heightPercent = ((template?.video_slot?.height ?? 1344) / 1920) * 100;
+    return Math.round(Math.min(widthPercent, heightPercent));
+  });
   const [transform, setTransform] = useState({
     zoom: template?.video_transform?.zoom ?? 1,
     offsetX: template?.video_transform?.offset_x ?? 0,
@@ -1467,6 +1561,10 @@ function TemplateManager({ template, onClose, onSaved }) {
   const [error, setError] = useState("");
   const orderedForegroundLayers = useMemo(() => sortForegroundLayers(foregroundLayers), [foregroundLayers]);
   const selectedForeground = orderedForegroundLayers.find((layer) => layer.id === selectedForegroundId) || orderedForegroundLayers[0] || null;
+  const slotCenterX = slot.x + slot.width / 2;
+  const slotCenterY = slot.y + slot.height / 2;
+  const slotNearCenterX = Math.abs(slotCenterX - 540) <= 12;
+  const slotNearCenterY = Math.abs(slotCenterY - 960) <= 12;
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -1544,6 +1642,31 @@ function TemplateManager({ template, onClose, onSaved }) {
             offsetY: Math.round(foregroundBase.offsetY + deltaY),
           },
         });
+      } else if (interaction.type === "foreground-resize") {
+        const foregroundBase = interaction.foregroundTransform;
+        const baseSize = interaction.foregroundSize || { width: 1080, height: 1920 };
+        const centerX = 540 + (foregroundBase.offsetX || 0);
+        const centerY = 960 + (foregroundBase.offsetY || 0);
+        const startDistance = Math.hypot(interaction.startCanvasX - centerX, interaction.startCanvasY - centerY);
+        const nextDistance = Math.hypot(
+          interaction.startCanvasX + deltaX - centerX,
+          interaction.startCanvasY + deltaY - centerY,
+        );
+        const distanceScale = startDistance > 1 ? nextDistance / startDistance : 1;
+        const sizeScale = Math.max(0.05, Math.min(6, Number(foregroundBase.scale || 1) * distanceScale));
+        const maxVisualWidth = Math.max(1, baseSize.width || 1080);
+        const maxVisualHeight = Math.max(1, baseSize.height || 1920);
+        const boundedScale = Math.max(
+          0.05,
+          Math.min(6, sizeScale, 2160 / maxVisualWidth, 3840 / maxVisualHeight),
+        );
+
+        updateForegroundLayer(interaction.foregroundId, {
+          transform: {
+            ...foregroundBase,
+            scale: Number(boundedScale.toFixed(3)),
+          },
+        });
       }
     };
 
@@ -1562,15 +1685,22 @@ function TemplateManager({ template, onClose, onSaved }) {
   const startInteraction = (event, type, foregroundLayer = null) => {
     event.preventDefault();
     event.stopPropagation();
+    const canvas = canvasRef.current;
+    const rect = canvas?.getBoundingClientRect();
+    const startCanvasX = rect ? ((event.clientX - rect.left) * 1080) / rect.width : 0;
+    const startCanvasY = rect ? ((event.clientY - rect.top) * 1920) / rect.height : 0;
     const activeForeground = foregroundLayer || selectedForeground;
     interactionRef.current = {
       type,
       startX: event.clientX,
       startY: event.clientY,
+      startCanvasX,
+      startCanvasY,
       slot,
       transform,
       foregroundId: activeForeground?.id || "",
       foregroundTransform: activeForeground?.transform || normalizeForegroundTransform(),
+      foregroundSize: activeForeground?.size || { width: 1080, height: 1920 },
     };
   };
 
@@ -1579,6 +1709,21 @@ function TemplateManager({ template, onClose, onSaved }) {
       zoom: 1,
       offsetX: 0,
       offsetY: 0,
+    });
+  };
+
+  const resetSlotToDefault = () => {
+    const percent = Math.max(10, Math.min(100, Number(slotResetPercent) || 70));
+    const ratio = percent / 100;
+    const width = Math.round(1080 * ratio);
+    const height = Math.round(1920 * ratio);
+    setSlotResetPercent(percent);
+
+    setSlot({
+      x: Math.round((1080 - width) / 2),
+      y: Math.round((1920 - height) / 2),
+      width,
+      height,
     });
   };
 
@@ -1591,6 +1736,8 @@ function TemplateManager({ template, onClose, onSaved }) {
         offsetX: 0,
         offsetY: 0,
         rotation: 0,
+        opacity: selectedForeground.transform.opacity ?? 1,
+        speed: selectedForeground.transform.speed ?? 1,
       },
     });
   };
@@ -1615,23 +1762,31 @@ function TemplateManager({ template, onClose, onSaved }) {
   };
 
   const addForegroundFiles = (files) => {
-    const newLayers = Array.from(files || []).map((file) => ({
-      id: `local_${Date.now()}_${Math.random().toString(16).slice(2)}`,
-      asset: "",
-      name: file.name,
-      file,
-      url: URL.createObjectURL(file),
-      size: {
-        width: 1080,
-        height: 1920,
-      },
-      transform: {
-        scale: 1,
-        offsetX: 0,
-        offsetY: 0,
-        rotation: 0,
-      },
-    }));
+    const newLayers = Array.from(files || []).map((file) => {
+      const isVideoFile = file?.type?.startsWith("video/") || /\.(mp4|mov|webm|mkv|avi|m4v)$/i.test(String(file?.name || ""));
+
+      return {
+        id: `local_${Date.now()}_${Math.random().toString(16).slice(2)}`,
+        asset: "",
+        name: file.name,
+        file,
+        url: URL.createObjectURL(file),
+        previewReady: !isVideoFile,
+        previewError: false,
+        size: {
+          width: 1080,
+          height: 1920,
+        },
+        transform: {
+          scale: 1,
+          offsetX: 0,
+          offsetY: 0,
+          rotation: 0,
+          opacity: 1,
+          speed: 1,
+        },
+      };
+    });
 
     if (newLayers.length === 0) return;
 
@@ -1677,7 +1832,7 @@ function TemplateManager({ template, onClose, onSaved }) {
 
   const handleSave = async () => {
     if (!name.trim() || (!editing && !background)) {
-      setError(editing ? "Hay nhap ten template." : "Hay nhap ten va chon background 9:16.");
+      setError(editing ? "Hay nhap ten template." : "Hay nhap ten va chon background.");
       return;
     }
 
@@ -1721,11 +1876,35 @@ function TemplateManager({ template, onClose, onSaved }) {
     }
   };
 
-  const isVideo = (file) => file?.type?.startsWith("video/");
+  const isVideo = (file) => {
+    if (!file) return false;
+    if (file.type?.startsWith("video/")) return true;
+    return /\.(mp4|mov|webm|mkv|avi|m4v)$/i.test(String(file.name || ""));
+  };
   const isVideoSource = (layer) => {
     if (layer?.file) return isVideo(layer.file);
     return /\.(mp4|mov|webm)(?:$|\?)/i.test(String(layer?.url || ""));
   };
+  const renderForegroundHandles = (layer, style) => (
+    <div
+      className="template-foreground-handle-box"
+      style={{
+        ...style,
+        zIndex: Number(style?.zIndex || 0) + 2,
+        pointerEvents: "none",
+      }}
+    >
+      {["nw", "ne", "sw", "se"].map((corner) => (
+        <button
+          key={corner}
+          type="button"
+          className={`template-foreground-resize-handle ${corner}`}
+          aria-label={`Resize foreground ${corner}`}
+          onPointerDown={(event) => startInteraction(event, "foreground-resize", layer)}
+        />
+      ))}
+    </div>
+  );
 
   return createPortal(
     <div className="template-manager-backdrop" role="dialog" aria-modal="true">
@@ -1749,15 +1928,19 @@ function TemplateManager({ template, onClose, onSaved }) {
               <textarea value={description} onChange={(event) => setDescription(event.target.value)} rows="3" />
             </label>
             <label>
-              <span>{editing ? "Background PNG / MP4 (optional replace)" : "Background PNG / MP4"}</span>
-              <input type="file" accept=".png,.jpg,.jpeg,.mp4,.mov,.webm" onChange={(event) => setBackground(event.target.files?.[0] || null)} />
+              <span>{editing ? "Background PNG / JPG / GIF / MP4 / MOV (optional replace)" : "Background PNG / JPG / GIF / MP4 / MOV"}</span>
+              <input
+                type="file"
+                accept=".png,.jpg,.jpeg,.gif,.mp4,.mov,.webm,image/png,image/jpeg,image/gif,video/mp4,video/quicktime,video/webm"
+                onChange={(event) => setBackground(event.target.files?.[0] || null)}
+              />
             </label>
             <label>
-              <span>Foreground JPG / PNG / GIF / MP4 (optional)</span>
+              <span>Foreground JPG / PNG / GIF / MP4 / MOV (optional)</span>
               <input
                 type="file"
                 multiple
-                accept=".jpg,.jpeg,.png,.gif,.webm,.mov,.mp4"
+                accept=".jpg,.jpeg,.png,.gif,.mp4,.mov,.webm,image/jpeg,image/png,image/gif,video/mp4,video/quicktime,video/webm"
                 onChange={(event) => {
                   addForegroundFiles(event.target.files);
                   event.target.value = "";
@@ -1873,6 +2056,23 @@ function TemplateManager({ template, onClose, onSaved }) {
               <span>w {slot.width}</span>
               <span>h {slot.height}</span>
             </div>
+            <div className="template-slot-reset-control">
+              <label>
+                <span>Reset size</span>
+                <input
+                  type="number"
+                  min="10"
+                  max="100"
+                  step="1"
+                  value={slotResetPercent}
+                  onChange={(event) => setSlotResetPercent(event.target.value)}
+                />
+                <b>%</b>
+              </label>
+              <button type="button" onClick={resetSlotToDefault}>
+                Center reset
+              </button>
+            </div>
             <div className="template-edit-mode">
               {[
                 ["slot", "Edit Slot"],
@@ -1975,6 +2175,32 @@ function TemplateManager({ template, onClose, onSaved }) {
                     })}
                   />
                 </label>
+                <label>
+                  <span>Opacity {Math.round(Number(selectedForeground.transform.opacity ?? 1) * 100)}%</span>
+                  <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value={selectedForeground.transform.opacity ?? 1}
+                    onChange={(event) => updateForegroundLayer(selectedForeground.id, {
+                      transform: { opacity: Number(event.target.value) },
+                    })}
+                  />
+                </label>
+                <label>
+                  <span>Speed {Number(selectedForeground.transform.speed ?? 1).toFixed(2)}x</span>
+                  <input
+                    type="range"
+                    min="0.25"
+                    max="4"
+                    step="0.05"
+                    value={selectedForeground.transform.speed ?? 1}
+                    onChange={(event) => updateForegroundLayer(selectedForeground.id, {
+                      transform: { speed: Number(event.target.value) },
+                    })}
+                  />
+                </label>
                 <div className="template-slot-values template-transform-values">
                   <span>move x {selectedForeground.transform.offsetX}</span>
                   <span>move y {selectedForeground.transform.offsetY}</span>
@@ -2001,7 +2227,20 @@ function TemplateManager({ template, onClose, onSaved }) {
                 isVideo(background)
                   ? <video src={backgroundUrl} autoPlay muted loop />
                   : <img src={backgroundUrl} alt="Background preview" />
-              ) : <div className="template-preview-empty">Chon background 9:16</div>}
+              ) : <div className="template-preview-empty">Chon background</div>}
+              {editMode === "slot" ? (
+                <div
+                  className={[
+                    "template-align-guides",
+                    slotNearCenterX ? "near-x" : "",
+                    slotNearCenterY ? "near-y" : "",
+                  ].filter(Boolean).join(" ")}
+                  aria-hidden="true"
+                >
+                  <span className="template-align-guide-x" />
+                  <span className="template-align-guide-y" />
+                </div>
+              ) : null}
               <div
                 className="template-video-slot"
                 style={{
@@ -2051,41 +2290,85 @@ function TemplateManager({ template, onClose, onSaved }) {
                     width: `${((layer.size.width || 1080) / 1080) * 100}%`,
                     height: `${((layer.size.height || 1920) / 1920) * 100}%`,
                     transform: `translate(-50%, -50%) scale(${layer.transform.scale}) rotate(${layer.transform.rotation}deg)`,
-                    zIndex: 30 + orderedForegroundLayers.length - index,
-                    pointerEvents: editMode === "foreground" ? "auto" : "none",
+                    opacity: layer.transform.opacity ?? 1,
+                    zIndex: isSelected ? 80 : 30 + orderedForegroundLayers.length - index,
+                    pointerEvents: editMode === "foreground" && isSelected ? "auto" : "none",
                   },
                 };
 
-                return isVideoSource(layer) ? (
-                  <video
-                    key={layer.id}
-                    {...commonProps}
-                    autoPlay
-                    muted
-                    loop
-                    onLoadedMetadata={(event) => {
-                      updateForegroundLayer(layer.id, {
-                        size: {
-                          width: event.currentTarget.videoWidth || 1080,
-                          height: event.currentTarget.videoHeight || 1920,
-                        },
-                      });
-                    }}
-                  />
-                ) : (
-                  <img
-                    key={layer.id}
-                    {...commonProps}
-                    alt="Foreground preview"
-                    onLoad={(event) => {
-                      updateForegroundLayer(layer.id, {
-                        size: {
-                          width: event.currentTarget.naturalWidth || 1080,
-                          height: event.currentTarget.naturalHeight || 1920,
-                        },
-                      });
-                    }}
-                  />
+                if (isVideoSource(layer)) {
+                  const showVideoFallback = layer.previewError || layer.previewReady === false;
+                  const { src, ...fallbackProps } = commonProps;
+
+                  return (
+                    <span key={layer.id} className="template-foreground-video-stack">
+                      <video
+                        {...commonProps}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        onLoadedMetadata={(event) => {
+                          updateForegroundLayer(layer.id, {
+                            previewReady: Boolean(event.currentTarget.videoWidth || event.currentTarget.videoHeight),
+                            previewError: false,
+                            size: {
+                              width: event.currentTarget.videoWidth || 1080,
+                              height: event.currentTarget.videoHeight || 1920,
+                            },
+                          });
+                        }}
+                        onLoadedData={() => {
+                          updateForegroundLayer(layer.id, {
+                            previewReady: true,
+                            previewError: false,
+                          });
+                        }}
+                        onError={() => {
+                          updateForegroundLayer(layer.id, {
+                            previewReady: false,
+                            previewError: true,
+                          });
+                        }}
+                      />
+                      {showVideoFallback ? (
+                        <div
+                          {...fallbackProps}
+                          className={`${commonProps.className} template-foreground-fallback`}
+                          style={{
+                            ...commonProps.style,
+                            zIndex: Number(commonProps.style.zIndex || 0) + 1,
+                          }}
+                        >
+                          <strong>{layer.previewError ? "MOV preview" : "Dang doc preview"}</strong>
+                          <span>
+                            {layer.previewError
+                              ? "Browser khong doc duoc codec nay, backend van co the render bang FFmpeg."
+                              : "Neu file dung codec Chrome ho tro, preview se tu hien sau khi load."}
+                          </span>
+                        </div>
+                      ) : null}
+                      {isSelected && editMode === "foreground" ? renderForegroundHandles(layer, commonProps.style) : null}
+                    </span>
+                  );
+                }
+
+                return (
+                  <span key={layer.id} className="template-foreground-image-stack">
+                    <img
+                      {...commonProps}
+                      alt="Foreground preview"
+                      onLoad={(event) => {
+                        updateForegroundLayer(layer.id, {
+                          size: {
+                            width: event.currentTarget.naturalWidth || 1080,
+                            height: event.currentTarget.naturalHeight || 1920,
+                          },
+                        });
+                      }}
+                    />
+                    {isSelected && editMode === "foreground" ? renderForegroundHandles(layer, commonProps.style) : null}
+                  </span>
                 );
               })}
             </div>
@@ -3447,6 +3730,127 @@ pre { margin: 0; white-space: pre-wrap; }
   background: rgba(86, 84, 202, 0.28);
   color: white;
 }
+.creative-frame-panel {
+  margin-top: 0.72rem;
+  display: grid;
+  gap: 0.74rem;
+  padding: 0.78rem;
+  border: 1px solid rgba(124, 146, 255, 0.2);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(91, 124, 250, 0.1), rgba(8, 11, 18, 0.38)),
+    rgba(3, 6, 12, 0.34);
+}
+.creative-frame-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.7rem;
+  padding-bottom: 0.62rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.creative-frame-panel-head strong {
+  display: block;
+  color: #f8fafc;
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+.creative-frame-panel-head span {
+  display: block;
+  margin-top: 0.18rem;
+  color: #96a0b5;
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+.creative-frame-option-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.58rem;
+}
+.creative-frame-check {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 0.58rem;
+  align-items: flex-start;
+  padding: 0.64rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+}
+.creative-frame-check input {
+  width: 16px;
+  height: 16px;
+  margin-top: 0.1rem;
+  accent-color: #6387ff;
+}
+.creative-frame-check strong {
+  display: block;
+  color: #f8fafc;
+  font-size: 0.74rem;
+  font-weight: 850;
+  line-height: 1.25;
+}
+.creative-frame-check small {
+  display: block;
+  margin-top: 0.24rem;
+  color: #9aa5ba;
+  font-size: 0.65rem;
+  line-height: 1.35;
+}
+.creative-frame-field {
+  min-width: 0;
+  display: grid;
+  gap: 0.38rem;
+}
+.creative-frame-field > span {
+  color: #aeb7ca;
+  font-size: 0.64rem;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.creative-frame-field input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 40px;
+  padding: 0 0.68rem;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 11px;
+  outline: none;
+  background: rgba(3, 6, 12, 0.5);
+  color: #f8fafc;
+}
+.creative-frame-field input:focus {
+  border-color: rgba(124, 146, 255, 0.58);
+  box-shadow: 0 0 0 3px rgba(91, 124, 250, 0.14);
+}
+.creative-frame-audio-toggle {
+  border-color: rgba(103, 215, 255, 0.16);
+  background: rgba(103, 215, 255, 0.055);
+}
+.creative-frame-audio-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 118px;
+  gap: 0.58rem;
+  align-items: flex-start;
+}
+.creative-frame-file input[type="file"] {
+  padding: 0.5rem 0.56rem;
+  font-size: 0.68rem;
+  line-height: 1.3;
+}
+.creative-frame-file small {
+  display: block;
+  color: #8d98ad;
+  font-size: 0.64rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.creative-frame-volume input {
+  text-align: center;
+  font-weight: 850;
+}
 .frame-template-error {
   margin-top: 0.75rem;
   color: #fca5a5;
@@ -3481,8 +3885,11 @@ pre { margin: 0; white-space: pre-wrap; }
 }
 .template-manager-modal {
   width: min(1220px, 100%);
+  height: calc(100vh - 3rem);
   max-height: calc(100vh - 3rem);
-  overflow: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   padding: 1.35rem;
   border: 1px solid rgba(145, 155, 184, 0.24);
   border-radius: 16px;
@@ -3499,6 +3906,7 @@ pre { margin: 0; white-space: pre-wrap; }
   gap: 1.1rem;
 }
 .template-manager-header {
+  flex: 0 0 auto;
   align-items: start;
   justify-content: space-between;
   margin-bottom: 1.15rem;
@@ -3529,14 +3937,32 @@ pre { margin: 0; white-space: pre-wrap; }
   align-items: start;
   justify-content: center;
   gap: 1.45rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
 }
 .template-manager-form {
   flex: 1 1 560px;
   max-width: 660px;
+  max-height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding-right: 1.05rem;
   padding: 1rem;
   border: 1px solid rgba(145, 155, 184, 0.14);
   border-radius: 12px;
   background: rgba(8, 11, 18, 0.56);
+}
+.template-manager-form::-webkit-scrollbar {
+  width: 8px;
+}
+.template-manager-form::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.04);
+  border-radius: 999px;
+}
+.template-manager-form::-webkit-scrollbar-thumb {
+  background: rgba(145,155,184,0.28);
+  border-radius: 999px;
 }
 .template-manager-form label {
   display: block;
@@ -3579,6 +4005,50 @@ pre { margin: 0; white-space: pre-wrap; }
   font-size: 0.68rem;
   font-weight: 800;
   text-align: center;
+}
+.template-slot-reset-control {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.4rem;
+  align-items: center;
+  margin: -0.25rem 0 0.7rem;
+  padding: 0.36rem;
+  border: 1px solid rgba(105, 212, 255, 0.18);
+  border-radius: 10px;
+  background: rgba(8, 145, 178, 0.08);
+}
+.template-slot-reset-control label {
+  display: grid;
+  grid-template-columns: auto 58px auto;
+  gap: 0.35rem;
+  align-items: center;
+  margin: 0;
+}
+.template-slot-reset-control label span,
+.template-slot-reset-control label b {
+  color: #a9dff0;
+  font-size: 0.66rem;
+  font-weight: 850;
+}
+.template-slot-reset-control input {
+  min-height: 28px;
+  padding: 0 0.42rem;
+  text-align: center;
+}
+.template-slot-reset-control button {
+  min-height: 30px;
+  padding: 0 0.72rem;
+  border: 1px solid rgba(105, 212, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(8, 145, 178, 0.14);
+  color: #c7f4ff;
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 850;
+}
+.template-slot-reset-control button:hover {
+  border-color: rgba(105, 212, 255, 0.6);
+  background: rgba(8, 145, 178, 0.22);
 }
 .template-edit-mode {
   display: grid;
@@ -3804,7 +4274,13 @@ pre { margin: 0; white-space: pre-wrap; }
   opacity: 0.58;
 }
 .template-preview-wrap {
-  flex: 0 0 390px;
+  flex: 0 0 min(390px, 100%);
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  box-sizing: border-box;
+  max-height: 100%;
+  overflow: visible;
   padding: 1rem;
   border: 1px solid rgba(145, 155, 184, 0.14);
   border-radius: 12px;
@@ -3812,7 +4288,9 @@ pre { margin: 0; white-space: pre-wrap; }
 }
 .template-preview-canvas {
   position: relative;
-  width: 390px;
+  width: min(100%, 360px);
+  max-width: 100%;
+  margin: 0 auto;
   aspect-ratio: 9 / 16;
   overflow: hidden;
   border: 1px solid rgba(145, 155, 184, 0.28);
@@ -3836,7 +4314,7 @@ pre { margin: 0; white-space: pre-wrap; }
 }
 .template-video-slot {
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   display: grid;
   place-items: center;
   box-sizing: border-box;
@@ -3849,6 +4327,39 @@ pre { margin: 0; white-space: pre-wrap; }
   font-weight: 900;
   touch-action: none;
   user-select: none;
+}
+.template-align-guides {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.template-align-guides span {
+  position: absolute;
+  display: block;
+  opacity: 0.38;
+  background: rgba(103, 232, 249, 0.72);
+  box-shadow: 0 0 16px rgba(103, 232, 249, 0.2);
+}
+.template-align-guide-x {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform: translateX(-0.5px);
+}
+.template-align-guide-y {
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-0.5px);
+}
+.template-align-guides.near-x .template-align-guide-x,
+.template-align-guides.near-y .template-align-guide-y {
+  opacity: 1;
+  background: #67e8f9;
+  box-shadow: 0 0 20px rgba(103, 232, 249, 0.72);
 }
 .template-video-slot > span {
   position: relative;
@@ -4004,6 +4515,75 @@ pre { margin: 0; white-space: pre-wrap; }
 .template-foreground-layer:active {
   cursor: grabbing;
 }
+.template-foreground-video-stack {
+  display: contents;
+}
+.template-foreground-image-stack {
+  display: contents;
+}
+.template-foreground-handle-box {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid rgba(103, 232, 249, 0.72);
+  background: transparent;
+  touch-action: none;
+  user-select: none;
+}
+.template-foreground-resize-handle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.96);
+  border-radius: 999px;
+  background: #67e8f9;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.34);
+  cursor: nwse-resize;
+  pointer-events: auto;
+}
+.template-foreground-resize-handle.nw {
+  left: -8px;
+  top: -8px;
+}
+.template-foreground-resize-handle.ne {
+  right: -8px;
+  top: -8px;
+  cursor: nesw-resize;
+}
+.template-foreground-resize-handle.sw {
+  left: -8px;
+  bottom: -8px;
+  cursor: nesw-resize;
+}
+.template-foreground-resize-handle.se {
+  right: -8px;
+  bottom: -8px;
+}
+.template-foreground-fallback {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.35rem;
+  padding: 0.8rem;
+  border: 1px dashed rgba(103, 232, 249, 0.58);
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, rgba(96, 165, 250, 0.16), rgba(15, 23, 42, 0.82)),
+    rgba(8, 11, 18, 0.72);
+  color: #e0f2fe;
+  text-align: center;
+  cursor: grab;
+}
+.template-foreground-fallback strong {
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+.template-foreground-fallback span {
+  max-width: 220px;
+  color: rgba(219, 234, 254, 0.74);
+  font-size: 0.64rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
 @media (max-width: 1100px) {
   .template-manager-modal {
     width: min(940px, 100%);
@@ -4012,7 +4592,7 @@ pre { margin: 0; white-space: pre-wrap; }
     flex-basis: 330px;
   }
   .template-preview-canvas {
-    width: 330px;
+    width: min(100%, 310px);
   }
 }
 @media (max-width: 760px) {
@@ -4020,13 +4600,22 @@ pre { margin: 0; white-space: pre-wrap; }
     padding: 0.7rem;
   }
   .template-manager-modal {
+    height: auto;
     max-height: calc(100vh - 1.4rem);
+    overflow: auto;
     padding: 0.9rem;
   }
   .template-manager-layout {
     flex-direction: column-reverse;
+    overflow: visible;
+  }
+  .template-manager-form {
+    max-height: none;
+    overflow: visible;
+    padding-right: 1rem;
   }
   .template-preview-wrap {
+    position: static;
     flex-basis: auto;
     box-sizing: border-box;
     width: 100%;

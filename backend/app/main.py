@@ -11,6 +11,14 @@ from app.api.crawler_routes import router as crawler_router
 from app.api.frame_template_routes import router as frame_template_router
 from app.api.auto_reup_routes import router as auto_reup_router
 from app.services.batch_service import reset_batch_render
+from app.services.auto_reup_service import (
+    start_auto_reup_action_monitor,
+    start_auto_reup_runtime_monitor,
+    start_meta_token_monitor,
+    stop_auto_reup_action_monitor,
+    stop_auto_reup_runtime_monitor,
+    stop_meta_token_monitor,
+)
 from app.api.utility_routes import clear_uploads_dir, router as utility_router
 from core.system.runtime_cleanup import clear_runtime_temp_dirs
 
@@ -32,10 +40,6 @@ app.include_router(crawler_router)
 app.include_router(frame_template_router)
 app.include_router(auto_reup_router)
 
-clear_uploads_dir()
-clear_runtime_temp_dirs()
-reset_batch_render()
-
 for media_dir in ["uploads", "outputs"]:
     os.makedirs(media_dir, exist_ok=True)
     app.mount(f"/media/{media_dir}", StaticFiles(directory=media_dir), name=media_dir)
@@ -47,3 +51,20 @@ def root():
         "status": "ok",
         "project": "AI Video Text Translator",
     }
+
+
+@app.on_event("startup")
+def startup_runtime_services():
+    clear_uploads_dir()
+    clear_runtime_temp_dirs()
+    reset_batch_render()
+    start_meta_token_monitor()
+    start_auto_reup_action_monitor()
+    start_auto_reup_runtime_monitor()
+
+
+@app.on_event("shutdown")
+def shutdown_background_services():
+    stop_auto_reup_runtime_monitor()
+    stop_auto_reup_action_monitor()
+    stop_meta_token_monitor()

@@ -3,10 +3,10 @@
 Likely next steps depend on user direction:
 
 1. Continue Auto Reup Dashboard:
-   - improve action UI
-   - connect real source crawling
-   - define safe Meta API publishing flow
-   - scheduler and duplicate protection
+   - run an end-to-end live validation with one Page and one source video
+   - inspect any platform-specific yt-dlp authentication/download failure
+   - add explicit retry controls and richer publish history if requested
+   - add scheduler observability for next-post time if requested
 
 2. Continue Frame Template:
    - add more templates

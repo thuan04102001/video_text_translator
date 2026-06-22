@@ -44,6 +44,8 @@ backend/logs/
 backend/uploads/
 backend/outputs/
 backend/temp/
+backend/frame_templates/
+backend/data/auto_reup_jobs/
 uploads/
 outputs/
 temp/

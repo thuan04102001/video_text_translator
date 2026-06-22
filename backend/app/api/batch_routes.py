@@ -28,6 +28,16 @@ class BatchStartRequest(BaseModel):
     apply_frame: bool = False
     frame_template_id: str | None = None
     frame_fit: str | None = None
+    apply_creative_frame: bool = False
+    creative_frame_template_id: str | None = None
+    creative_frame_fit: str | None = None
+    creative_remove_source_audio: bool = True
+    creative_randomize_variant: bool = True
+    creative_seed: int | None = None
+    creative_smart_audio: bool = True
+    creative_audio_profile: str = "auto"
+    creative_audio_volume: float = 1.0
+    creative_custom_audio_path: str | None = None
     trim_start_seconds: float = 0
     trim_end_seconds: float = 0
 
@@ -55,6 +65,16 @@ def start_batch(payload: BatchStartRequest):
             apply_frame=payload.apply_frame,
             frame_template_id=payload.frame_template_id,
             frame_fit=payload.frame_fit,
+            apply_creative_frame=payload.apply_creative_frame,
+            creative_frame_template_id=payload.creative_frame_template_id,
+            creative_frame_fit=payload.creative_frame_fit,
+            creative_remove_source_audio=payload.creative_remove_source_audio,
+            creative_randomize_variant=payload.creative_randomize_variant,
+            creative_seed=payload.creative_seed,
+            creative_smart_audio=payload.creative_smart_audio,
+            creative_audio_profile=payload.creative_audio_profile,
+            creative_audio_volume=payload.creative_audio_volume,
+            creative_custom_audio_path=payload.creative_custom_audio_path,
             trim_start_seconds=payload.trim_start_seconds,
             trim_end_seconds=payload.trim_end_seconds,
         )

@@ -134,6 +134,16 @@ class BatchManager:
             self.apply_frame = False
             self.frame_template_id = ""
             self.frame_fit = ""
+            self.apply_creative_frame = False
+            self.creative_frame_template_id = ""
+            self.creative_frame_fit = ""
+            self.creative_remove_source_audio = True
+            self.creative_randomize_variant = True
+            self.creative_seed = None
+            self.creative_smart_audio = True
+            self.creative_audio_profile = "auto"
+            self.creative_audio_volume = 1.0
+            self.creative_custom_audio_path = ""
             self.trim_start_seconds = 0.0
             self.trim_end_seconds = 0.0
             self.input_dir = ""
@@ -209,6 +219,16 @@ class BatchManager:
                 "apply_frame": self.apply_frame,
                 "frame_template_id": self.frame_template_id,
                 "frame_fit": self.frame_fit,
+                "apply_creative_frame": self.apply_creative_frame,
+                "creative_frame_template_id": self.creative_frame_template_id,
+                "creative_frame_fit": self.creative_frame_fit,
+                "creative_remove_source_audio": self.creative_remove_source_audio,
+                "creative_randomize_variant": self.creative_randomize_variant,
+                "creative_seed": self.creative_seed,
+                "creative_smart_audio": self.creative_smart_audio,
+                "creative_audio_profile": self.creative_audio_profile,
+                "creative_audio_volume": self.creative_audio_volume,
+                "creative_custom_audio_path": self.creative_custom_audio_path,
                 "trim_start_seconds": self.trim_start_seconds,
                 "trim_end_seconds": self.trim_end_seconds,
                 "elapsed_seconds": self._elapsed_locked(),
@@ -231,6 +251,16 @@ class BatchManager:
         apply_frame: bool = False,
         frame_template_id: Optional[str] = None,
         frame_fit: Optional[str] = None,
+        apply_creative_frame: bool = False,
+        creative_frame_template_id: Optional[str] = None,
+        creative_frame_fit: Optional[str] = None,
+        creative_remove_source_audio: bool = True,
+        creative_randomize_variant: bool = True,
+        creative_seed: Optional[int] = None,
+        creative_smart_audio: bool = True,
+        creative_audio_profile: str = "auto",
+        creative_audio_volume: float = 1.0,
+        creative_custom_audio_path: Optional[str] = None,
         trim_start_seconds: float = 0,
         trim_end_seconds: float = 0,
     ) -> Dict:
@@ -238,14 +268,17 @@ class BatchManager:
         trim_start = max(0.0, float(trim_start_seconds or 0))
         trim_end = max(0.0, float(trim_end_seconds or 0))
         trim_enabled = trim_start > 0 or trim_end > 0
+        apply_creative_frame = bool(apply_creative_frame or apply_frame)
+        creative_frame_template_id = creative_frame_template_id or frame_template_id
+        creative_frame_fit = creative_frame_fit or frame_fit
 
-        if not translate and not apply_frame and not trim_enabled:
-            raise Exception("Enable Translate Caption, Apply Frame, or Trim before rendering")
+        if not translate and not apply_frame and not apply_creative_frame and not trim_enabled:
+            raise Exception("Enable Translate Caption, Creative Frame, or Trim before rendering")
 
         if translate and translation_mode != "argos":
             raise Exception("Batch render currently supports Argos Offline only")
 
-        if apply_frame and not frame_template_id:
+        if apply_creative_frame and not creative_frame_template_id:
             raise Exception("Select a frame template before rendering")
 
         scan = scan_batch_folder(input_dir=input_dir, output_dir=output_dir)
@@ -267,6 +300,16 @@ class BatchManager:
             self.apply_frame = bool(apply_frame)
             self.frame_template_id = str(frame_template_id or "")
             self.frame_fit = str(frame_fit or "")
+            self.apply_creative_frame = bool(apply_creative_frame)
+            self.creative_frame_template_id = str(creative_frame_template_id or "")
+            self.creative_frame_fit = str(creative_frame_fit or "")
+            self.creative_remove_source_audio = bool(creative_remove_source_audio)
+            self.creative_randomize_variant = bool(creative_randomize_variant)
+            self.creative_seed = creative_seed
+            self.creative_smart_audio = bool(creative_smart_audio)
+            self.creative_audio_profile = str(creative_audio_profile or "auto")
+            self.creative_audio_volume = max(0.02, min(2.0, float(creative_audio_volume or 1.0)))
+            self.creative_custom_audio_path = str(creative_custom_audio_path or "")
             self.trim_start_seconds = trim_start
             self.trim_end_seconds = trim_end
             self.input_dir = input_dir
@@ -394,6 +437,16 @@ class BatchManager:
                 apply_frame=self.apply_frame,
                 frame_template_id=self.frame_template_id or None,
                 frame_fit=self.frame_fit or None,
+                apply_creative_frame=self.apply_creative_frame,
+                creative_frame_template_id=self.creative_frame_template_id or None,
+                creative_frame_fit=self.creative_frame_fit or None,
+                creative_remove_source_audio=self.creative_remove_source_audio,
+                creative_randomize_variant=self.creative_randomize_variant,
+                creative_seed=self.creative_seed,
+                creative_smart_audio=self.creative_smart_audio,
+                creative_audio_profile=self.creative_audio_profile,
+                creative_audio_volume=self.creative_audio_volume,
+                creative_custom_audio_path=self.creative_custom_audio_path or None,
                 trim_start_seconds=self.trim_start_seconds,
                 trim_end_seconds=self.trim_end_seconds,
                 progress_callback=lambda event: self._update_item_progress(
@@ -467,6 +520,16 @@ def start_batch_render(
     apply_frame: bool = False,
     frame_template_id: Optional[str] = None,
     frame_fit: Optional[str] = None,
+    apply_creative_frame: bool = False,
+    creative_frame_template_id: Optional[str] = None,
+    creative_frame_fit: Optional[str] = None,
+    creative_remove_source_audio: bool = True,
+    creative_randomize_variant: bool = True,
+    creative_seed: Optional[int] = None,
+    creative_smart_audio: bool = True,
+    creative_audio_profile: str = "auto",
+    creative_audio_volume: float = 1.0,
+    creative_custom_audio_path: Optional[str] = None,
     trim_start_seconds: float = 0,
     trim_end_seconds: float = 0,
 ) -> Dict:
@@ -479,6 +542,16 @@ def start_batch_render(
         apply_frame=apply_frame,
         frame_template_id=frame_template_id,
         frame_fit=frame_fit,
+        apply_creative_frame=apply_creative_frame,
+        creative_frame_template_id=creative_frame_template_id,
+        creative_frame_fit=creative_frame_fit,
+        creative_remove_source_audio=creative_remove_source_audio,
+        creative_randomize_variant=creative_randomize_variant,
+        creative_seed=creative_seed,
+        creative_smart_audio=creative_smart_audio,
+        creative_audio_profile=creative_audio_profile,
+        creative_audio_volume=creative_audio_volume,
+        creative_custom_audio_path=creative_custom_audio_path,
         trim_start_seconds=trim_start_seconds,
         trim_end_seconds=trim_end_seconds,
     )

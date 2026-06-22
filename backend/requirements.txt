@@ -18,6 +18,7 @@ ffmpeg-python
 
 pydantic
 requests
+cryptography
 yt-dlp
 playwright
 curl-cffi
